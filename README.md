@@ -1,1 +1,1 @@
-Tech business tools and ideas for beginners 
+assess your lifestyle tools productivity and content on one single web.

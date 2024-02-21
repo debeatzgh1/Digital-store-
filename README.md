@@ -1,109 +1,23 @@
-Get expert and professional mobile application services, website designing and development services just by placing order on Digital store.
-Are you currently looking for a CRM software, mobile application (android), website, blog, collaboration software, ready made pdfs templates for your team, organization, brand and profession?
-Order now from Digital store and get served within minutes or according to your project proposal.
+Digital stores have everything you need for your daily live activities, on Digital store you can get everything you need online for your daily activities all in one place.
 
-Look no further for
-Freelance services.
-Social media manager
-Android app developer
-CRM to manage clients
-Collaborative software for your team & organization or school
-Website for your brand, profession and activities
-Pdfs templates to help you create professional brochures, party invites, project proposals, Newsletters, novels etc.
+There is no need to move from one app to the other, get everything you need for your daily live activities on the Digital store.
 
-Automation software to help you improve customer services with AI response and directions.
+Get the following done on the Digital store without hassle.
 
-All you need is to place order or contact an expert for human response.
+Shop online from home.
+Buy home appliances, audio equipment, shoes, mother care and cosmetics, beauty products, mobile phones and accessories, home essentials and get free shipping and delivery worldwide when you Shop on Digital store.
 
-At Digital stores we believe in creativity and skills in this modern world.
+Digital store has partnered with top trending brands and stores such as Amazon, Microsoft, AliExpress, , Sprocket etc, to help you get what you need for your activities.
 
-We help you bring your ideas to life through technology and creativity.
+Find the best products you need from top trending brands and get free shipping and delivery worldwide when you make purchases on Amazon, AliExpress, Microsoft, jumia, Yazing on this platform.
 
-With or without technical skills and experiences we will help you to achieve a goal of becoming a successful software developer, homepreneur, digital marketer, blogger, website developer etc.
+Build personal assets
+With or without specific skills, technical skills, coding skills and experiences Digital store has everything you need to build personal assets from the scratch.
 
-With our referral and partnership programs we will refer you to the best platforms, softwares, B2B brands and educational institutes that will help you achieve your goals.
+Digital stores have the best tools and ideas for startups, freelancers, side hustlers, bloggers, developers, managers etc.
 
-I will refer you to legit platforms that will help you to achieve what you are looking for as an entrepreneur start up, digital marketer, freelancer, social media manager, model, freelancer,designer etc.
+If you are looking for work from home tools and ideas, side hustle tools and ideas and how to improve revenue using the internet Digital store has it all in one place.
 
-Are you looking for a place to earn legal career certificates, badges and degrees? 
-
-Do you want to earn developer certificate, architectural certificate, cloud computing certificate, Google developer certificate, Android developer certificate etc.
-
-Are you looking for a legit place with side hustles, bidding, referral and paid partnership?
-
-Are you looking for free/premium themes to build your professional websites, e-commerce, online stores, mobile apps, CRM etc. 
-
-Are you looking for a place to improve future career opportunities with legal certificates, degrees and badges?
-
-At digital creators hub i recommend to you the best tools and ideas you need for your activity and productivity. 
-
-I help smart kids, Young and adults to achieve a goal of becoming a successful entrepreneurs, software developers, mobile app developers with legal certificates and badges in this tech and modern world.
-
-connect with Small and local businesses to the world with the help of our marketplaces and online platforms available for everyone accessible to the internet.
-
-l will help connect musicians, bloggers, investors, teachers and learners with diverse backgrounds, skills, interests and experiences.
-
-Are you looking for a place to build your side hustle ideas?
-
-Are you New to the use of modern day technology to improve lives and productivity?
-
-Are you looking for a place to build personal assets from scratch?
-
-This platform is designed to help you access every tool and idea you need to build personal assets from scratch.
-
-Side hustle tools and ideas help you earn money aside from your normal monthly salaries, access unlimited tools and ideas by reading through our blogs and Websites
-Get answers to the most    important topics concerning. 
-
-1: Blogging
-
-2: freelancing
-
-3: Affiliate marketing
-
-4: Internet marketing
-
-5: WordPress/blogger
-
-6: Google adsense
-
-7: Digital creations
-
-8: Digital marketing etc.
-
-This platform help smart kids, Young and adults to achieve a goal of becoming a successful entrepreneur in this tech and modern world.
- 
-Are you looking for a place to build your side hustle ideas?
-
-Are you New to the use of modern day technology to improve lives and productivity?
-
-Are you looking for a place to build personal assets from scratch?
-
-With or without technical experiences and skills you can own personal assets through many activities with or without investment.
-
-We're the synth 🎹 in your business and digital transformation.
-
-
-
-This platform as an internet marketing firm is to help everyone, young or adult, entrepreneurs, freelancers, digital creators, managers, students, influencers, startups and publishers who are looking for the best tools and ideas to.
-
-Build professional websites and blogs.
-Increase brand awareness.
-
-Learn blogging and monetization.
-Start affiliate business.
-
-Get professional certificates.
-Improve future career opportunities with badges.
-
-Build personal asset monetization funnels etc.
-
-
-With referral and partnership programs we will refer you to the best platforms, softwares and educational institutes that will help you achieve your goals.
-
-l will refer you to legit platforms that will help you to achieve what you are looking for as an entrepreneur start up. 
-
-With or without technical skills and experiences we will help you to achieve a goal of becoming a successful entrepreneur.
- 
 If you are looking for a place to learn more about and 
  Get answers to the most    important topics concerning. 
 
@@ -123,7 +37,42 @@ If you are looking for a place to learn more about and
 
 8: Digital marketing etc
 
-Access all these tools and ideas for free.
-ACCESS EVERYTHING YOU NEED TO BUILD ASSETS FROM THE SCRATCH.
+Access all these tools and ideas for free/ premium
+Digital store have everything you need all in one place
+
+Earn professional certificates.
+
+With or without technical skills and experiences Digital store will help you to achieve a goal of becoming a successful software developer, homepreneur, digital marketer, blogger, website developer etc.
+
+With  referral and partnership programs Digital store will refer you to the best platforms, softwares, B2B brands and educational institutes that will help you achieve your goals.
+
+Digital stores will refer you to legit platforms that will help you to achieve what you are looking for as an entrepreneur, digital marketer, freelancer, social media manager, model, freelancer,designer etc.
+
+Are you looking for a place to earn legal career certificates, badges and degrees? 
+
+Do you want to earn developer certificate, architectural certificate, cloud computing certificate, Google developer certificate, Android developer certificate etc.
+
+Are you looking for a legit place with side hustles, bidding, referral and paid partnership?
+
+Digital store has everything you need all in one place.
+
+Build anything with ease
+Build mobile apps, online stores, blogs, websites, CRMs, forms and docs with or without coding skills, graphic designing skills and experiences.
+
+On a Digital store you can build anything you want at any time and anywhere on any device with internet access.
+
+Access Link to.
+
+Business listing 
+
+Thus you can instantly list your business on Google maps and search engines right from our website. 
+
+Build forms & presentations.
+
+Instantly create and manage business forms and presentations, create pdfs which can be converted into a website or blog, create business portfolios with docs and slides all on premium subscription etc.
+
+Get everything done online on the Digital store.
+
+Visit Digital store 
 
 

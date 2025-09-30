@@ -1,4 +1,4 @@
-# DigitalStore: Curated Digital Products & AI Resources
+#Debeatzgh: Curated Digital Products & AI Resources
 
 Welcome to **DigitalStore**, your one-stop destination for discovering, accessing, and leveraging the best digital products and AI-powered resources to boost your productivity, creativity, and business growth.
 

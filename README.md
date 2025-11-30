@@ -93,9 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // -------------------------------------------------------
   const buttons = [
     {
-      text: "🔥 Home",
+      text: "🔥 Blog",
       bg: "#1e90ff",
-      url: "https://debeatzgh1.github.io/Digital-Creator-s-Essential-Guides-Tools/"
+      url: "https://beatzde4.blogspot.com/"
     },
     {
       text: "📌 Feed",

@@ -96,7 +96,7 @@ const projects = [
   {repo:"curly-chainsaw", title:"HTML Script Preview Editor", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251117-062730_12400543406935180859.png"},
   {repo:"debeatzgh", title:"Personal Dev Portfolio Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/1763148379311_1619032177476517720.jpg"},
   {repo:"-Interactive-Knowledge-Quizzes", title:"Knowledge Quiz System", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251121-103715_12380909417515729112.png"},
-  {repo:"menu-widget-", title:"Menu Floating Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/screenshot_20251130-1208252190938125820625163.png"},
+  {repo:"menu-widget-", title:"Menu Floating Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
   {repo:"Decode-AI-starter-kit-", title:"Decode AI Starter Kit", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
   {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop", title:"Affiliate Digital Shop", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
   {repo:"Digital-Creator-s-Essential-Guides-Tools", title:"Digital Creator Guides", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/amodernminimallayoutwithafloatingdockofcolorfulroundicons28patreonbloggergithub29ontherightsideofacleanwebpagemockup6676994054500999142.jpg"},

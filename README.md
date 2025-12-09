@@ -96,7 +96,7 @@ const projects = [
   {repo:"Ai-quiz", title:"AI Quiz Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251115-064239_16091878416894258095.png"},
   {repo:"curly-chainsaw", title:"HTML Script Preview Editor", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251117-062730_12400543406935180859.png"},
   {repo:"debeatzgh", title:"Personal Dev Portfolio Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/1763148379311_1619032177476517720.jpg"},
-  {repo:"-Interactive-Knowledge-Quizzes", title:"Knowledge Quiz System", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251121-103715_12380909417515729112.png"},
+  {repo:"-Interactive-Knowledge-Quizzes", title:"Knowledge Quiz System", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251116-194655_15225247202538813719.png"},
   {repo:"menu-widget-", title:"Menu Floating Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/screenshot_20251130-1208252190938125820625163.png"},
   {repo:"Decode-AI-starter-kit-", title:"Decode AI Starter Kit", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/screenshot_20251206-065712_18880183932568216810.png"},
   {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop", title:"Digital Products Affiliate Shop", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},

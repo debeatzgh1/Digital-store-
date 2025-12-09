@@ -90,23 +90,22 @@ iframe { width: 100%; height: 100%; border: none; }
 <!-- CAROUSEL -->
 <div class="carousel-container">
 
-<!-- TEMPLATE FOR EACH CARD -->
 <script>
 const projects = [
   {repo:"Ai-quiz", title:"AI Quiz Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251115-064239_16091878416894258095.png"},
   {repo:"curly-chainsaw", title:"HTML Script Preview Editor", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251117-062730_12400543406935180859.png"},
   {repo:"debeatzgh", title:"Personal Dev Portfolio Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/1763148379311_1619032177476517720.jpg"},
-  {repo:"-Interactive-Knowledge-Quizzes", title:"Knowledge Quiz System", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251116-194655_15225247202538813719.png"},
+  {repo:"-Interactive-Knowledge-Quizzes", title:"Knowledge Quiz System", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251121-103715_12380909417515729112.png"},
   {repo:"menu-widget-", title:"Menu Floating Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/screenshot_20251130-1208252190938125820625163.png"},
   {repo:"Decode-AI-starter-kit-", title:"Decode AI Starter Kit", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/screenshot_20251206-065712_18880183932568216810.png"},
-  {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop", title:"Digital Products Affiliate Shop", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
-  {repo:"Digital-Creator-s-Essential-Guides-Tools", title:"Digital Creator Essential Guides", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/amodernminimallayoutwithafloatingdockofcolorfulroundicons28patreonbloggergithub29ontherightsideofacleanwebpagemockup6676994054500999142.jpg"},
+  {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop", title:"Affiliate Digital Shop", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
+  {repo:"Digital-Creator-s-Essential-Guides-Tools", title:"Digital Creator Guides", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/amodernminimallayoutwithafloatingdockofcolorfulroundicons28patreonbloggergithub29ontherightsideofacleanwebpagemockup6676994054500999142.jpg"},
   {repo:"Docs-Carousel-for-Blogger", title:"Documentation Carousel", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designamodernminimalisticcatalogcoverthumbnailfeaturingagridoffloatingbrowserwindowsandappcardseachwithsmalliconslikebloggergithubshoppingcartchatbubbleandnewsletterenvelope6320208726725.jpg"},
-  {repo:"-Floating-Dock-Smart-Iframe-Modal", title:"Smart Floating Iframe Dock", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designadigitalproductse-commerceonlinedeals3545265155247625100.jpg"},
-  {repo:"Sliding-Newsletter-Signup-Widget-with-Pulse-Animation", title:"Newsletter Slider Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/minimalistbusinessiconthemealaptopwithdollarsignsorgrowtharrows4197483127374475983.jpg"},
+  {repo:"-Floating-Dock-Smart-Iframe-Modal", title:"Floating Iframe Dock", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designadigitalproductse-commerceonlinedeals3545265155247625100.jpg"},
+  {repo:"Sliding-Newsletter-Signup-Widget-with-Pulse-Animation", title:"Newsletter Slider", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/minimalistbusinessiconthemealaptopwithdollarsignsorgrowtharrows4197483127374475983.jpg"},
   {repo:"PowerPoint-carousel-widget", title:"PowerPoint Carousel Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createacleanandmodernflat-stylethumbnailforaweb-basedtoolcalledhtmlpagegeneratorforblogger322282329178022614.jpg"},
-  {repo:"Blogger-iframe-embed-generator", title:"Blogger Iframe Embed Generator", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createavibranteye-catchingyoutubeblogthumbnailfeaturingafloatingquizpop-upicononadigitalblogpage5084708667809205788.jpg"},
-  {repo:"firebase-front-end-components", title:"Firebase Front-End UI Components", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createatoolthatgeneratesiframeorcard-styleembedsforindividualbloggerpostscompletewiththumbnailtitleandreadmorebuttonforcross-blogpromotion754077096311972631.jpg"},
+  {repo:"Blogger-iframe-embed-generator", title:"Iframe Embed Generator", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createavibranteye-catchingyoutubeblogthumbnailfeaturingafloatingquizpop-upicononadigitalblogpage5084708667809205788.jpg"},
+  {repo:"firebase-front-end-components", title:"Firebase Components", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createatoolthatgeneratesiframeorcard-styleembedsforindividualbloggerpostscompletewiththumbnailtitleandreadmorebuttonforcross-blogpromotion754077096311972631.jpg"},
   {repo:"Custom-Blogger-Theme-for-with-Dynamic-Post-Loading-and-Logo-", title:"Custom Blogger Theme", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createamodernandcleanthumbnailforawebdevelopmentproducttitledmodernhomepagestylingtemplatewithtailwindcss3420170625469385526.jpg"}
 ];
 </script>
@@ -122,12 +121,23 @@ projects.forEach(p => {
       <img src="${p.thumb}" class="w-full h-40 object-cover"/>
       <div class="p-5">
         <h3 class="text-xl font-bold text-gray-800 mb-2">${p.title}</h3>
-        <p class="text-gray-600 text-sm mb-4">A modern widget/tool built for creators, bloggers, and developers. Explore, preview, and collaborate on GitHub.</p>
+        <p class="text-gray-600 text-sm mb-4">Explore modern widgets, tools, templates, and developer utilities.</p>
 
         <div class="flex gap-3 mt-3">
-          <button onclick="openPreview('https://debeatzgh1.github.io/${p.repo}/')" class="bg-emerald-600 text-white px-4 py-2 rounded-lg w-1/2">Preview</button>
+          
+          <!-- GREEN PREVIEW BUTTON -->
+          <button onclick="openPreview('https://debeatzgh1.github.io/${p.repo}/')" 
+            class="px-4 py-2 rounded-lg w-1/2 text-white font-bold"
+            style="background:#10B981;">
+            Preview
+          </button>
 
-          <a href="https://github.com/debeatzgh1/${p.repo}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg w-1/2 text-center">Collaborate</a>
+          <!-- RED COLLABORATE BUTTON -->
+          <a href="https://github.com/debeatzgh1/${p.repo}" target="_blank"
+            class="px-4 py-2 rounded-lg w-1/2 text-center text-white font-bold"
+            style="background:#DC2626;">
+            Repo
+          </a>
         </div>
       </div>
     </div>
@@ -137,7 +147,7 @@ projects.forEach(p => {
 
 </div>
 
-<!-- GLOBAL ACTION BUTTONS -->
+<!-- FLOATING ACTION BUTTONS -->
 <div class="floating-bar">
   <a href="https://github.com/apps/dkonsult" target="_blank" class="float-btn bg-purple-600">⭐ Sign Up on GitHub</a>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -24,59 +24,92 @@
   scroll-snap-align: center;
   overflow: hidden;
   transition: transform 0.3s;
+  position: relative;
 }
 .carousel-card:hover { transform: translateY(-5px); }
+
+/* Badges */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+.badge-new { background:#22c55e; }
+.badge-popular { background:#ef4444; }
+.badge-featured { background:#3b82f6; }
 
 /* Modal */
 .modal-bg {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.65);
+  inset: 0;
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(6px);
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 .modal-box {
-  width: 90%; height: 90%;
+  width: 92%;
+  height: 92%;
   background: white;
   border-radius: 16px;
   overflow: hidden;
+  position: relative;
 }
-iframe { width: 100%; height: 100%; border: none; }
 
-/* Close button */
-.close-btn {
-  background: red;
-  color: white;
-  font-weight: bold;
-  padding: 10px;
+/* iframe */
+iframe {
   width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Modal Controls */
+.modal-controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.ctrl-btn {
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
   cursor: pointer;
 }
+.ctrl-btn:hover { opacity: 0.85; }
 
-/* Floating Buttons */
+/* Floating Button */
 .floating-bar {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  bottom: 18px;
+  right: 18px;
   z-index: 99999;
 }
 .float-btn {
-  background: #2563eb;
-  color: white;
-  padding: 14px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+  background:#f97316;
+  color:white;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.25);
 }
-.float-btn:hover { opacity: 0.85; }
+.float-btn:hover { opacity:0.9; }
 </style>
 </head>
 
@@ -84,57 +117,62 @@ iframe { width: 100%; height: 100%; border: none; }
 
 <header class="text-center py-8">
   <h1 class="text-3xl font-bold text-gray-800">🚀 Debeatzgh Developer Hub</h1>
-  <p class="text-lg text-gray-600 mt-3">A collection of powerful widgets, templates, tools, and creative resources for Bloggers, Creators, and Developers.</p>
+  <p class="text-lg text-gray-600 mt-3">
+    Widgets, tools, templates, and creative resources for Bloggers, Creators & Developers.
+  </p>
 </header>
 
 <!-- CAROUSEL -->
 <div class="carousel-container">
+  <div id="carousel"></div>
+</div>
 
 <script>
 const projects = [
-  {repo:"Ai-quiz", title:"AI Quiz Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251115-064239_16091878416894258095.png"},
-  {repo:"curly-chainsaw", title:"HTML Script Preview Editor", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251117-062730_12400543406935180859.png"},
-  {repo:"debeatzgh", title:"Personal Dev Portfolio Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/1763148379311_1619032177476517720.jpg"},
-  {repo:"-Interactive-Knowledge-Quizzes", title:"Knowledge Quiz System", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251121-103715_12380909417515729112.png"},
-  {repo:"menu-widget-", title:"Menu Floating Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
-  {repo:"Decode-AI-starter-kit-", title:"Decode AI Starter Kit", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
-  {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop", title:"Affiliate Digital Shop", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/imagine_15372372473219325794330965895770459.jpg"},
-  {repo:"Digital-Creator-s-Essential-Guides-Tools", title:"Digital Creator Guides", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/amodernminimallayoutwithafloatingdockofcolorfulroundicons28patreonbloggergithub29ontherightsideofacleanwebpagemockup6676994054500999142.jpg"},
-  {repo:"Docs-Carousel-for-Blogger", title:"Documentation Carousel", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designamodernminimalisticcatalogcoverthumbnailfeaturingagridoffloatingbrowserwindowsandappcardseachwithsmalliconslikebloggergithubshoppingcartchatbubbleandnewsletterenvelope6320208726725.jpg"},
-  {repo:"-Floating-Dock-Smart-Iframe-Modal", title:"Floating Iframe Dock", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designadigitalproductse-commerceonlinedeals3545265155247625100.jpg"},
-  {repo:"Sliding-Newsletter-Signup-Widget-with-Pulse-Animation", title:"Newsletter Slider", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/minimalistbusinessiconthemealaptopwithdollarsignsorgrowtharrows4197483127374475983.jpg"},
-  {repo:"PowerPoint-carousel-widget", title:"PowerPoint Carousel Widget", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createacleanandmodernflat-stylethumbnailforaweb-basedtoolcalledhtmlpagegeneratorforblogger322282329178022614.jpg"},
-  {repo:"Blogger-iframe-embed-generator", title:"Iframe Embed Generator", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createavibranteye-catchingyoutubeblogthumbnailfeaturingafloatingquizpop-upicononadigitalblogpage5084708667809205788.jpg"},
-  {repo:"firebase-front-end-components", title:"Firebase Components", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createatoolthatgeneratesiframeorcard-styleembedsforindividualbloggerpostscompletewiththumbnailtitleandreadmorebuttonforcross-blogpromotion754077096311972631.jpg"},
-  {repo:"Custom-Blogger-Theme-for-with-Dynamic-Post-Loading-and-Logo-", title:"Custom Blogger Theme", thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createamodernandcleanthumbnailforawebdevelopmentproducttitledmodernhomepagestylingtemplatewithtailwindcss3420170625469385526.jpg"}
+  {
+    repo:"Ai-quiz",
+    title:"AI Quiz Widget",
+    thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251115-064239_16091878416894258095.png",
+    badge:"new"
+  },
+  {
+    repo:"curly-chainsaw",
+    title:"HTML Script Preview Editor",
+    thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/11/screenshot_20251117-062730_12400543406935180859.png",
+    badge:"popular"
+  },
+  {
+    repo:"debeatzgh",
+    title:"Personal Dev Portfolio Widget",
+    thumb:"https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/1763148379311_1619032177476517720.jpg",
+    badge:"featured"
+  }
 ];
-</script>
 
-<div id="carousel"></div>
-
-<script>
 const container = document.getElementById("carousel");
 
 projects.forEach(p => {
   container.innerHTML += `
     <div class="carousel-card">
-      <img src="${p.thumb}" class="w-full h-40 object-cover"/>
+      ${p.badge ? `<span class="badge badge-${p.badge}">${p.badge}</span>` : ""}
+
+      <img src="${p.thumb}" class="w-full h-40 object-cover">
+
       <div class="p-5">
         <h3 class="text-xl font-bold text-gray-800 mb-2">${p.title}</h3>
-        <p class="text-gray-600 text-sm mb-4">Explore modern widgets, tools, templates, and developer utilities.</p>
+        <p class="text-gray-600 text-sm mb-4">
+          Explore modern widgets, tools, templates, and utilities.
+        </p>
 
-        <div class="flex gap-3 mt-3">
-          
-          <!-- GREEN PREVIEW BUTTON -->
-          <button onclick="openPreview('https://debeatzgh1.github.io/${p.repo}/')" 
-            class="px-4 py-2 rounded-lg w-1/2 text-white font-bold"
+        <div class="flex gap-3">
+          <button onclick="openPreview('https://debeatzgh1.github.io/${p.repo}/')"
+            class="px-4 py-2 w-1/2 rounded-lg text-white font-bold"
             style="background:#10B981;">
             Preview
           </button>
 
-          <!-- RED COLLABORATE BUTTON -->
           <a href="https://github.com/debeatzgh1/${p.repo}" target="_blank"
-            class="px-4 py-2 rounded-lg w-1/2 text-center text-white font-bold"
+            class="px-4 py-2 w-1/2 rounded-lg text-center text-white font-bold"
             style="background:#DC2626;">
             Repo
           </a>
@@ -145,46 +183,76 @@ projects.forEach(p => {
 });
 </script>
 
-</div>
-
-<!-- FLOATING ACTION BUTTONS -->
+<!-- FLOATING MILKSHAKE BUTTON -->
 <div class="floating-bar">
-  <a href="https://github.com/apps/dkonsult" target="_blank" class="float-btn bg-purple-600">⭐ Sign Up on GitHub</a>
-
-  <div class="float-btn bg-orange-600" onclick="openForm()">📨 Suggestions Form</div>
+  <div class="float-btn" onclick="openMilkshake()">🌐 My Links</div>
 </div>
 
 <!-- PREVIEW MODAL -->
 <div class="modal-bg" id="previewModal">
-  <div class="modal-box">
+  <div class="modal-box" id="previewBox">
+    <div class="modal-controls">
+      <div class="ctrl-btn" onclick="toggleFullscreen()">⛶ Fullscreen</div>
+      <div class="ctrl-btn" onclick="closePreview()">✕ Close</div>
+    </div>
     <iframe id="previewFrame"></iframe>
-    <button class="close-btn" onclick="closePreview()">Close</button>
   </div>
 </div>
 
-<!-- SUGGESTION FORM MODAL -->
-<div class="modal-bg" id="formModal">
-  <div class="modal-box">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdx2yQU28hg4L4Rm8rSdvjR4FZPpbys7XKEZDFul5yubv3Olg/viewform?embedded=true"></iframe>
-    <button class="close-btn" onclick="closeForm()">Close</button>
+<!-- MILKSHAKE MODAL -->
+<div class="modal-bg" id="milkshakeModal">
+  <div class="modal-box" id="milkshakeBox">
+    <div class="modal-controls">
+      <div class="ctrl-btn" onclick="toggleFullscreenMilkshake()">⛶ Fullscreen</div>
+      <div class="ctrl-btn" onclick="closeMilkshake()">✕ Close</div>
+    </div>
+    <iframe src="https://msha.ke/debeatzgh"></iframe>
   </div>
 </div>
 
 <script>
 function openPreview(url){
-  document.getElementById("previewFrame").src = url;
-  document.getElementById("previewModal").style.display = "flex";
-}
-function closePreview(){
-  document.getElementById("previewModal").style.display = "none";
-  document.getElementById("previewFrame").src = "";
+  previewFrame.src = url;
+  previewModal.style.display = "flex";
 }
 
-function openForm(){
-  document.getElementById("formModal").style.display = "flex";
+function closePreview(){
+  previewModal.style.display = "none";
+  previewFrame.src = "";
+  exitFullscreen();
 }
-function closeForm(){
-  document.getElementById("formModal").style.display = "none";
+
+function openMilkshake(){
+  milkshakeModal.style.display = "flex";
+}
+
+function closeMilkshake(){
+  milkshakeModal.style.display = "none";
+  exitFullscreen();
+}
+
+function toggleFullscreen(){
+  const el = document.getElementById("previewBox");
+  fullscreen(el);
+}
+
+function toggleFullscreenMilkshake(){
+  const el = document.getElementById("milkshakeBox");
+  fullscreen(el);
+}
+
+function fullscreen(el){
+  if (!document.fullscreenElement) {
+    el.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+function exitFullscreen(){
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
 }
 </script>
 

@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Content Hub</title>
-
+<title>Debeatzgh Developer Hub – Widgets & Tools</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 
 <style>
@@ -16,28 +15,31 @@
   padding:20px;
 }
 .carousel-card{
-  min-width:340px;
+  min-width:320px;
+  max-width:320px;
   background:#fff;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
   scroll-snap-align:center;
   overflow:hidden;
   position:relative;
   transition:.3s;
 }
-.carousel-card:hover{transform:translateY(-6px)}
+.carousel-card:hover{transform:translateY(-5px)}
 
 .badge{
   position:absolute;
   top:12px;left:12px;
-  padding:4px 12px;
+  padding:4px 10px;
   font-size:11px;
   font-weight:700;
   border-radius:999px;
   color:#fff;
+  text-transform:uppercase;
 }
-.badge-featured{background:#2563eb}
-.badge-popular{background:#16a34a}
+.badge-new{background:#22c55e}
+.badge-popular{background:#ef4444}
+.badge-featured{background:#3b82f6}
 
 .modal-bg{
   display:none;
@@ -50,10 +52,10 @@
   z-index:9999;
 }
 .modal-box{
-  width:94%;
+  width:92%;
   height:92%;
   background:#fff;
-  border-radius:18px;
+  border-radius:16px;
   overflow:hidden;
   position:relative;
 }
@@ -67,7 +69,7 @@ iframe{width:100%;height:100%;border:none}
   z-index:10;
 }
 .ctrl-btn{
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.7);
   color:#fff;
   padding:6px 10px;
   border-radius:8px;
@@ -76,73 +78,87 @@ iframe{width:100%;height:100%;border:none}
   cursor:pointer;
 }
 
-/* Floating Milkshake Button */
-.floating-btn{
+.floating-bar{
   position:fixed;
   bottom:18px;
   right:18px;
+  z-index:99999;
+}
+.float-btn{
   background:#f97316;
   color:#fff;
-  padding:12px 18px;
+  padding:10px 14px;
   border-radius:999px;
-  font-weight:700;
   font-size:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  font-weight:600;
   cursor:pointer;
-  z-index:99999;
 }
 </style>
 </head>
 
 <body class="bg-gray-100">
 
-<header class="text-center py-10">
-  <h1 class="text-3xl font-bold">AI & Knowledge Hub</h1>
-  <p class="text-gray-600 mt-2 max-w-xl mx-auto">
-    Explore AI insights, tutorials, and creator resources in a focused,
-    distraction-free reading experience.
+<header class="text-center py-8">
+  <h1 class="text-3xl font-bold">🚀 Debeatzgh Developer Hub</h1>
+  <p class="text-gray-600 mt-2">
+    Widgets, tools, templates & creative resources for Bloggers, Creators & Developers
   </p>
 </header>
 
-<!-- CONTENT CARDS -->
 <div class="carousel-container">
+  <div id="carousel"></div>
+</div>
 
-  <!-- WORDPRESS -->
+<script>
+const projects = [
+ {repo:"Ai-quiz",title:"AI Quiz Widget",badge:"new"},
+ {repo:"curly-chainsaw",title:"HTML Script Preview Editor",badge:"popular"},
+ {repo:"debeatzgh",title:"Personal Dev Portfolio Widget",badge:"featured"},
+ {repo:"-Interactive-Knowledge-Quizzes",title:"Knowledge Quiz System",badge:"popular"},
+ {repo:"menu-widget-",title:"Menu Floating Widget",badge:"featured"},
+ {repo:"Decode-AI-starter-kit-",title:"Decode AI Starter Kit",badge:"new"},
+ {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop",title:"Affiliate Digital Shop",badge:"featured"},
+ {repo:"Digital-Creator-s-Essential-Guides-Tools",title:"Digital Creator Guides",badge:"popular"},
+ {repo:"Docs-Carousel-for-Blogger",title:"Documentation Carousel",badge:"new"},
+ {repo:"-Floating-Dock-Smart-Iframe-Modal",title:"Floating Iframe Dock",badge:"featured"},
+ {repo:"Sliding-Newsletter-Signup-Widget-with-Pulse-Animation",title:"Newsletter Slider"},
+ {repo:"PowerPoint-carousel-widget",title:"PowerPoint Carousel Widget"},
+ {repo:"Blogger-iframe-embed-generator",title:"Iframe Embed Generator"},
+ {repo:"firebase-front-end-components",title:"Firebase Components"},
+ {repo:"Custom-Blogger-Theme-for-with-Dynamic-Post-Loading-and-Logo-",title:"Custom Blogger Theme"}
+];
+
+const container=document.getElementById("carousel");
+
+projects.forEach(p=>{
+ container.innerHTML+=`
   <div class="carousel-card">
-    <span class="badge badge-featured">Featured</span>
+    ${p.badge?`<span class="badge badge-${p.badge}">${p.badge}</span>`:""}
     <img src="https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designamodernminimalisticcatalogcoverthumbnailfeaturingagridoffloatingbrowserwindowsandappcardseachwithsmalliconslikebloggergithubshoppingcartchatbubbleandnewsletterenvelope6320208726725.jpg"
-         class="w-full h-44 object-cover">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">Build With AI (WordPress)</h3>
+         class="w-full h-40 object-cover">
+    <div class="p-5">
+      <h3 class="text-xl font-bold mb-2">${p.title}</h3>
       <p class="text-sm text-gray-600 mb-4">
-        Deep-dive AI articles, real-world use cases, and step-by-step learning
-        resources.
+        Explore modern widgets, tools & templates.
       </p>
-      <button onclick="openPreview('https://debeatzgh.wordpress.com/build-with-ai-2/')"
-        class="w-full px-4 py-3 rounded-xl text-white font-bold bg-blue-600">
-        Open Articles
-      </button>
+      <div class="flex gap-3">
+        <button onclick="openPreview('https://debeatzgh1.github.io/${p.repo}/')"
+          class="w-1/2 px-4 py-2 rounded-lg text-white font-bold bg-emerald-500">
+          Preview
+        </button>
+        <a href="https://github.com/debeatzgh1/${p.repo}" target="_blank"
+          class="w-1/2 px-4 py-2 rounded-lg text-white font-bold bg-red-600 text-center">
+          Repo
+        </a>
+      </div>
     </div>
-  </div>
+  </div>`;
+});
+</script>
 
-  <!-- BLOGGER -->
-  <div class="carousel-card">
-    <span class="badge badge-popular">Popular</span>
-    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
-         class="w-full h-44 object-cover">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">AI Knowledge Blog (Blogger)</h3>
-      <p class="text-sm text-gray-600 mb-4">
-        Beginner-friendly explanations, decoding AI concepts for creators,
-        students, and entrepreneurs.
-      </p>
-      <button onclick="openPreview('https://debeatzgh2.blogspot.com/p/blog-page_9.html')"
-        class="w-full px-4 py-3 rounded-xl text-white font-bold bg-emerald-600">
-        Read Blog
-      </button>
-    </div>
-  </div>
-
+<!-- FLOATING MILKSHAKE -->
+<div class="floating-bar">
+  <div class="float-btn" onclick="openMilkshake()">🌐 My Links</div>
 </div>
 
 <!-- PREVIEW MODAL -->
@@ -156,52 +172,42 @@ iframe{width:100%;height:100%;border:none}
   </div>
 </div>
 
-<!-- FLOATING MILKSHAKE -->
-<div class="floating-btn" onclick="openPreview('https://msha.ke/debeatzgh')">
-  🌐 My Links
+<!-- MILKSHAKE MODAL -->
+<div class="modal-bg" id="milkshakeModal">
+  <div class="modal-box" id="milkshakeBox">
+    <div class="modal-controls">
+      <div class="ctrl-btn" onclick="toggleFS('milkshakeBox')">⛶ Fullscreen</div>
+      <div class="ctrl-btn" onclick="closeMilkshake()">✕ Close</div>
+    </div>
+    <iframe src="https://msha.ke/debeatzgh"></iframe>
+  </div>
 </div>
 
 <script>
-const previewModal=document.getElementById("previewModal");
-const previewFrame=document.getElementById("previewFrame");
-
 function openPreview(url){
-  previewFrame.src=url;
-  previewModal.style.display="flex";
+ previewFrame.src=url;
+ previewModal.style.display="flex";
 }
-
 function closePreview(){
-  previewModal.style.display="none";
-  previewFrame.src="";
-  if(document.fullscreenElement){document.exitFullscreen();}
+ previewModal.style.display="none";
+ previewFrame.src="";
+ exitFS();
 }
-
+function openMilkshake(){
+ milkshakeModal.style.display="flex";
+}
+function closeMilkshake(){
+ milkshakeModal.style.display="none";
+ exitFS();
+}
 function toggleFS(id){
-  const el=document.getElementById(id);
-  if(!document.fullscreenElement){el.requestFullscreen();}
-  else{document.exitFullscreen();}
+ const el=document.getElementById(id);
+ if(!document.fullscreenElement){el.requestFullscreen();}
+ else{document.exitFullscreen();}
 }
-
-/* 🔍 Auto-detect ads & external links */
-previewFrame.addEventListener("load", ()=>{
-  try{
-    const doc=previewFrame.contentDocument;
-    const links=doc.querySelectorAll("a[href]");
-    links.forEach(a=>{
-      const href=a.href;
-      if(
-        !href.includes("debeatzgh.wordpress.com") &&
-        !href.includes("debeatzgh2.blogspot.com") &&
-        !href.includes("msha.ke")
-      ){
-        a.setAttribute("target","_blank");
-        a.setAttribute("rel","noopener");
-      }
-    });
-  }catch(e){
-    console.warn("Cross-domain content: ad handling limited");
-  }
-});
+function exitFS(){
+ if(document.fullscreenElement){document.exitFullscreen();}
+}
 </script>
 
 </body>

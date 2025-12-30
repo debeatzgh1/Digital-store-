@@ -158,7 +158,7 @@ projects.forEach(p=>{
 
 <!-- FLOATING MILKSHAKE -->
 <div class="floating-bar">
-  <div class="float-btn" onclick="openMilkshake()">🌐 My Links</div>
+  <div class="float-btn" onclick="openMilkshake()">🌐</div>
 </div>
 
 <!-- PREVIEW MODAL -->
@@ -179,7 +179,7 @@ projects.forEach(p=>{
       <div class="ctrl-btn" onclick="toggleFS('milkshakeBox')">⛶ Fullscreen</div>
       <div class="ctrl-btn" onclick="closeMilkshake()">✕ Close</div>
     </div>
-    <iframe src="https://msha.ke/debeatzgh"></iframe>
+    <iframe src="https://debeatzgh1.github.io/Home-/"></iframe>
   </div>
 </div>
 

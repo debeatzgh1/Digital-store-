@@ -3,95 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Debeatzgh Developer Hub – Widgets & Tools</title>
+<title> Developer Hub – Widgets & Tools</title>
+
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 
 <style>
 .carousel-container{
-  display:flex;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  gap:20px;
-  padding:20px;
+  display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+  gap:20px; padding:20px;
 }
 .carousel-card{
-  min-width:320px;
-  max-width:320px;
-  background:#fff;
-  border-radius:16px;
+  min-width:320px; max-width:320px;
+  background:#fff; border-radius:16px;
   box-shadow:0 8px 25px rgba(0,0,0,.15);
   scroll-snap-align:center;
-  overflow:hidden;
-  position:relative;
-  transition:.3s;
+  transition:.3s; position:relative;
 }
 .carousel-card:hover{transform:translateY(-5px)}
 
 .badge{
-  position:absolute;
-  top:12px;left:12px;
-  padding:4px 10px;
-  font-size:11px;
-  font-weight:700;
-  border-radius:999px;
-  color:#fff;
-  text-transform:uppercase;
+  position:absolute; top:12px; left:12px;
+  padding:4px 10px; font-size:11px; font-weight:700;
+  border-radius:999px; color:#fff; text-transform:uppercase;
 }
 .badge-new{background:#22c55e}
 .badge-popular{background:#ef4444}
 .badge-featured{background:#3b82f6}
 
+/* MODALS */
 .modal-bg{
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+  justify-content:center; align-items:center;
+  z-index:9999;
+}
+.modal-box{
+  width:92%; height:92%;
+  background:#fff; border-radius:16px;
+  overflow:hidden; position:relative;
+}
+iframe{width:100%; height:100%; border:none}
+
+.modal-controls{
+  position:absolute; top:10px; left:10px;
+  display:flex; gap:8px; z-index:10;
+}
+.ctrl-btn{
+  background:rgba(0,0,0,.75);
+  color:#fff; padding:6px 10px;
+  border-radius:8px; font-size:12px;
+  font-weight:700; cursor:pointer;
+}
+
+/* MINI LAUNCHER */
+#mini-launcher{
+  position:fixed;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;height:44px;
+  background:#16a34a;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  cursor:pointer;
+  z-index:99999;
+}
+#mini-panel{
   display:none;
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.7);
-  backdrop-filter:blur(6px);
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+  z-index:99998;
 }
-.modal-box{
-  width:92%;
-  height:92%;
+#mini-box{
+  position:absolute;
+  inset:14px;
   background:#fff;
   border-radius:16px;
+  display:flex;
+  flex-direction:column;
   overflow:hidden;
-  position:relative;
 }
-iframe{width:100%;height:100%;border:none}
-
-.modal-controls{
-  position:absolute;
-  top:10px;left:10px;
+#mini-tabs{
   display:flex;
   gap:8px;
-  z-index:10;
+  padding:8px;
+  background:#f1f5f9;
 }
-.ctrl-btn{
-  background:rgba(0,0,0,.7);
-  color:#fff;
-  padding:6px 10px;
-  border-radius:8px;
-  font-size:12px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.floating-bar{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  z-index:99999;
-}
-.float-btn{
-  background:#f97316;
-  color:#fff;
-  padding:10px 14px;
+#mini-tabs button{
+  padding:6px 12px;
+  border:none;
   border-radius:999px;
-  font-size:14px;
-  font-weight:600;
+  font-size:12px;
+  background:#e5e7eb;
   cursor:pointer;
+}
+#mini-tabs button.active{
+  background:#16a34a;
+  color:#fff;
 }
 </style>
 </head>
@@ -99,7 +113,7 @@ iframe{width:100%;height:100%;border:none}
 <body class="bg-gray-100">
 
 <header class="text-center py-8">
-  <h1 class="text-3xl font-bold">🚀 Debeatzgh Developer Hub</h1>
+  <h1 class="text-3xl font-bold">🚀 Developer Hub</h1>
   <p class="text-gray-600 mt-2">
     Widgets, tools, templates & creative resources for Bloggers, Creators & Developers
   </p>
@@ -110,7 +124,7 @@ iframe{width:100%;height:100%;border:none}
 </div>
 
 <script>
-const projects = [
+const projects=[
  {repo:"Ai-quiz",title:"AI Quiz Widget",badge:"new"},
  {repo:"curly-chainsaw",title:"HTML Script Preview Editor",badge:"popular"},
  {repo:"debeatzgh",title:"Personal Dev Portfolio Widget",badge:"featured"},
@@ -156,11 +170,6 @@ projects.forEach(p=>{
 });
 </script>
 
-<!-- FLOATING MILKSHAKE -->
-<div class="floating-bar">
-  <div class="float-btn" onclick="openMilkshake()">🌐</div>
-</div>
-
 <!-- PREVIEW MODAL -->
 <div class="modal-bg" id="previewModal">
   <div class="modal-box" id="previewBox">
@@ -172,14 +181,22 @@ projects.forEach(p=>{
   </div>
 </div>
 
-<!-- MILKSHAKE MODAL -->
-<div class="modal-bg" id="milkshakeModal">
-  <div class="modal-box" id="milkshakeBox">
+<!-- MINI MULTI-TAB LAUNCHER -->
+<div id="mini-launcher">☰</div>
+
+<div id="mini-panel">
+  <div id="mini-box">
     <div class="modal-controls">
-      <div class="ctrl-btn" onclick="toggleFS('milkshakeBox')">⛶ Fullscreen</div>
-      <div class="ctrl-btn" onclick="closeMilkshake()">✕ Close</div>
+      <div class="ctrl-btn" onclick="miniBack()">⟵</div>
+      <div class="ctrl-btn" onclick="miniForward()">⟶</div>
+      <div class="ctrl-btn" onclick="toggleFS('mini-box')">⛶</div>
+      <div class="ctrl-btn" onclick="closeMini()">✕</div>
     </div>
-    <iframe src="https://debeatzgh1.github.io/Home-/"></iframe>
+    <div id="mini-tabs">
+      <button onclick="openMini(0)" class="active">Home</button>
+      <button onclick="openMini(1)">Docs</button>
+    </div>
+    <iframe id="miniFrame"></iframe>
   </div>
 </div>
 
@@ -193,13 +210,34 @@ function closePreview(){
  previewFrame.src="";
  exitFS();
 }
-function openMilkshake(){
- milkshakeModal.style.display="flex";
+
+/* MINI LAUNCHER LOGIC */
+const miniUrls=[
+ "https://debeatzgh1.github.io/Home-/",
+ "https://docs.google.com/document/d/1OfyxaiFRlRhu736Ayr8NZ_ieaNZoS5nNrhHggO63Ixg/edit?usp=drivesdk"
+];
+
+const miniPanel=document.getElementById("mini-panel");
+const miniFrame=document.getElementById("miniFrame");
+const miniTabs=document.querySelectorAll("#mini-tabs button");
+
+document.getElementById("mini-launcher").onclick=()=>{
+ miniPanel.style.display="block";
+ openMini(0);
+};
+
+function openMini(i){
+ miniFrame.src=miniUrls[i];
+ miniTabs.forEach(b=>b.classList.remove("active"));
+ miniTabs[i].classList.add("active");
 }
-function closeMilkshake(){
- milkshakeModal.style.display="none";
- exitFS();
+function closeMini(){
+ miniPanel.style.display="none";
+ miniFrame.src="";
 }
+function miniBack(){ try{miniFrame.contentWindow.history.back()}catch(e){} }
+function miniForward(){ try{miniFrame.contentWindow.history.forward()}catch(e){} }
+
 function toggleFS(id){
  const el=document.getElementById(id);
  if(!document.fullscreenElement){el.requestFullscreen();}

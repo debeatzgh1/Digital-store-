@@ -60,9 +60,9 @@ iframe{width:100%; height:100%; border:none}
 #mini-launcher{
   position:fixed;
   right:16px;
-  top:50%;
+  bottom:50%;
   transform:translateY(-50%);
-  width:44px;height:44px;
+  width:40px;height:40px;
   background:#16a34a;
   color:#fff;
   border-radius:50%;
@@ -213,7 +213,7 @@ function closePreview(){
 
 /* MINI LAUNCHER LOGIC */
 const miniUrls=[
- "https://debeatzgh1.github.io/Home-/",
+ "https://form.svhrt.com/60f4a0aeedc1993c8c7b3989",
  "https://docs.google.com/document/d/1OfyxaiFRlRhu736Ayr8NZ_ieaNZoS5nNrhHggO63Ixg/edit?usp=drivesdk"
 ];
 

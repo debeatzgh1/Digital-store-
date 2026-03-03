@@ -1,4 +1,141 @@
 
+<html lang="en-GB">
+<head>
+    <style>
+        :root {
+            /* Light Mode Variables */
+            --banner-bg: rgba(255, 255, 255, 0.8);
+            --banner-text: #1e293b;
+            --page-bg: #f8fafc;
+            --accent: #3b82f6;
+            --glass-border: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Variables */
+            --banner-bg: rgba(15, 23, 42, 0.9);
+            --banner-text: #f1f5f9;
+            --page-bg: #0f172a;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding-top: 50px; /* Space for fixed banner */
+            background-color: var(--page-bg);
+            transition: background 0.3s ease;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background: var(--banner-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10005;
+            box-sizing: border-box;
+            color: var(--banner-text);
+        }
+
+        /* Auto Carousel */
+        .carousel-container {
+            flex-grow: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            margin: 0 40px;
+        }
+
+        .carousel-track {
+            display: inline-block;
+            animation: scroll-text 20s linear infinite;
+        }
+
+        .carousel-item {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding-right: 50px; /* Space between loops */
+        }
+
+        @keyframes scroll-text {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            cursor: pointer;
+            background: var(--glass-border);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            color: var(--banner-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-banner">
+        <span style="font-weight: 800; font-size: 1rem; color: var(--accent);">D.</span>
+
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <span class="carousel-item">Widgets, tools, templates & creative resources for Bloggers, Creators & Developers • </span>
+                <span class="carousel-item">Widgets, tools, templates & creative resources for Bloggers, Creators & Developers • </span>
+            </div>
+        </div>
+
+        <div class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+            <span id="theme-icon">🌙</span> Dark Mode
+        </div>
+    </header>
+
+    <script>
+        function toggleTheme() {
+            const body = document.documentElement;
+            const btn = document.getElementById('theme-btn');
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.innerHTML = '🌙 Dark Mode';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '☀️ Light Mode';
+            }
+        }
+
+        // Set dark mode as default based on your preference
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-btn').innerHTML = '☀️ Light Mode';
+    </script>
+
+</body>
+</html>
+
+
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">

@@ -1,393 +1,211 @@
-<iframe src="https://msha.ke/debeatzgh#quest-post" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
 
-
-
-
-<html lang="en-GB">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeBeatzGH Premium | Dev Ecosystem</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            /* Light Mode Variables */
-            --banner-bg: rgba(255, 255, 255, 0.8);
-            --banner-text: #1e293b;
-            --page-bg: #f8fafc;
             --accent: #3b82f6;
-            --glass-border: rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="dark"] {
-            /* Dark Mode Variables */
-            --banner-bg: rgba(15, 23, 42, 0.9);
-            --banner-text: #f1f5f9;
-            --page-bg: #0f172a;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(15, 23, 42, 0.9);
+            --border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0f172a;
         }
 
         body {
-            margin: 0;
-            padding-top: 50px; /* Space for fixed banner */
-            background-color: var(--page-bg);
-            transition: background 0.3s ease;
-            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            padding-top: 45px;
         }
 
-        /* Top Banner */
+        /* --- 1. PREMIUM AUTO-SCROLL BANNER --- */
         .top-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 45px;
-            background: var(--banner-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            z-index: 10005;
-            box-sizing: border-box;
-            color: var(--banner-text);
+            position: fixed; top: 0; left: 0; width: 100%; height: 45px;
+            background: var(--glass); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; z-index: 10005; padding: 0 20px;
         }
 
-        /* Auto Carousel */
+        .scroll-container { flex: 1; overflow: hidden; white-space: nowrap; margin: 0 30px; }
+        .scroll-track { display: inline-block; animation: scrollText 25s linear infinite; }
+        .scroll-item { display: inline-block; font-size: 0.75rem; font-weight: 600; padding-right: 60px; color: #94a3b8; }
+
+        @keyframes scrollText { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- 2. CAROUSEL & LAZY LOADING --- */
         .carousel-container {
-            flex-grow: 1;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            margin: 0 40px;
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            gap: 20px; padding: 40px 20px; scrollbar-width: none;
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+
+        .card {
+            min-width: 300px; background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border); border-radius: 20px;
+            overflow: hidden; scroll-snap-align: start; transition: 0.4s;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        /* Lazy Load Placeholder Style */
+        .lazy-img { background: #1e293b; height: 160px; width: 100%; object-fit: cover; transition: opacity 0.5s; }
+
+        /* --- 3. PREMIUM IFRAME MODAL --- */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center;
+            z-index: 100000; animation: fadeIn 0.3s ease;
         }
 
-        .carousel-track {
-            display: inline-block;
-            animation: scroll-text 20s linear infinite;
+        .modal-window {
+            width: 95%; height: 90%; background: #fff; border-radius: 24px;
+            overflow: hidden; position: relative; transform: scale(0.95); transition: 0.3s;
         }
 
-        .carousel-item {
-            display: inline-block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            padding-right: 50px; /* Space between loops */
+        .modal-active .modal-window { transform: scale(1); }
+
+        .modal-bar {
+            position: absolute; top: 15px; left: 15px; display: flex; gap: 10px; z-index: 10;
         }
 
-        @keyframes scroll-text {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        .btn-ui {
+            background: rgba(0,0,0,0.8); color: #fff; padding: 8px 15px;
+            border-radius: 12px; font-size: 11px; font-weight: 700; cursor: pointer;
         }
 
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            cursor: pointer;
-            background: var(--glass-border);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            color: var(--banner-text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
+        /* --- 4. AUTO POPUP NOTIFICATION --- */
+        #auto-popup {
+            position: fixed; bottom: -100px; left: 20px; 
+            background: var(--accent); color: white; padding: 15px 25px;
+            border-radius: 15px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+            z-index: 99999; transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; gap: 15px;
         }
 
-        .theme-toggle:hover {
-            border-color: var(--accent);
-        }
+        #auto-popup.show { bottom: 20px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <header class="top-banner">
-        <span style="font-weight: 800; font-size: 1rem; color: var(--accent);">D.</span>
-
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <span class="carousel-item">Widgets, tools, templates & creative resources for Bloggers, Creators & Developers • </span>
-                <span class="carousel-item">Widgets, tools, templates & creative resources for Bloggers, Creators & Developers • </span>
-            </div>
+        <span class="text-blue-500 font-black text-xl">D.</span>
+        <div class="scroll-container">
+            <div class="scroll-track" id="banner-track">
+                </div>
         </div>
-
-        <div class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
-            <span id="theme-icon">🌙</span> Dark Mode
-        </div>
+        <button onclick="launchModal('https://msha.ke/debeatzgh#quest-post')" class="text-[10px] font-bold border border-white/20 px-3 py-1 rounded-full hover:bg-white/10">GUEST POST</button>
     </header>
 
-    <script>
-        function toggleTheme() {
-            const body = document.documentElement;
-            const btn = document.getElementById('theme-btn');
-            const icon = document.getElementById('theme-icon');
+    <div class="max-w-6xl mx-auto mt-10 px-6">
+        <h1 class="text-4xl font-black tracking-tighter">Developer Hub <span class="text-blue-500">.</span></h1>
+        <p class="text-slate-400 mt-2">Premium widgets and creative resources.</p>
+    </div>
 
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                btn.innerHTML = '🌙 Dark Mode';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                btn.innerHTML = '☀️ Light Mode';
-            }
+    <div class="carousel-container" id="main-grid">
+        </div>
+
+    <div class="modal-overlay" id="globalModal">
+        <div class="modal-window">
+            <div class="modal-bar">
+                <div class="btn-ui" onclick="closeModal()">✕ CLOSE</div>
+                <div class="btn-ui" onclick="toggleFull()">⛶ FULLSCREEN</div>
+            </div>
+            <iframe id="modalFrame" class="w-full h-full border-none"></iframe>
+        </div>
+    </div>
+
+    <div id="auto-popup">
+        <i class="fas fa-rocket text-xl"></i>
+        <div>
+            <p class="text-[10px] uppercase font-black opacity-80">New Resource Available</p>
+            <p class="text-sm font-bold">Check out the Decode AI Starter Kit!</p>
+        </div>
+        <button onclick="document.getElementById('auto-popup').classList.remove('show')" class="ml-4 opacity-50 hover:opacity-100">✕</button>
+    </div>
+
+    <script>
+        const repos = [
+            {id: "Ai-quiz", name: "AI Quiz Widget"},
+            {id: "curly-chainsaw", name: "HTML Editor"},
+            {id: "debeatzgh", name: "Dev Portfolio"},
+            {id: "menu-widget-", name: "Floating Menu"},
+            {id: "Decode-AI-starter-kit-", name: "AI Starter Kit"},
+            {id: "-Floating-Dock-Smart-Iframe-Modal", name: "Smart Iframe Dock"}
+        ];
+
+        // 1. Populate Banner
+        const track = document.getElementById('banner-track');
+        const content = "Widgets, tools, templates & creative resources for Bloggers, Creators & Developers • ";
+        track.innerHTML = `<span class="scroll-item">${content.repeat(10)}</span>`;
+
+        // 2. Populate Carousel with Lazy Loading
+        const grid = document.getElementById('main-grid');
+        repos.forEach(repo => {
+            grid.innerHTML += `
+                <div class="card">
+                    <img data-src="https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designamodernminimalisticcatalogcoverthumbnailfeaturingagridoffloatingbrowserwindowsandappcardseachwithsmalliconslikebloggergithubshoppingcartchatbubbleandnewsletterenvelope6320208726725.jpg" 
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" 
+                         class="lazy-img shadow-xl">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg">${repo.name}</h3>
+                        <p class="text-slate-500 text-xs mt-2 mb-5">Professional GitHub resource for modern web apps.</p>
+                        <button onclick="launchModal('https://debeatzgh1.github.io/${repo.id}/')" 
+                                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl text-xs transition">
+                            LIVE PREVIEW
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+
+        // 3. Lazy Load Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy-img');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
+
+        // 4. Modal Engine
+        function launchModal(url) {
+            const modal = document.getElementById('globalModal');
+            document.getElementById('modalFrame').src = url;
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('modal-active'), 10);
+            document.body.style.overflow = 'hidden';
         }
 
-        // Set dark mode as default based on your preference
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('theme-btn').innerHTML = '☀️ Light Mode';
+        function closeModal() {
+            const modal = document.getElementById('globalModal');
+            modal.classList.remove('modal-active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.getElementById('modalFrame').src = '';
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleFull() {
+            const frame = document.getElementById('modalFrame');
+            if (frame.requestFullscreen) frame.requestFullscreen();
+        }
+
+        // 5. Auto Popup Logic (Triggers after 5 seconds)
+        setTimeout(() => {
+            document.getElementById('auto-popup').classList.add('show');
+        }, 5000);
     </script>
-
-</body>
-</html>
-
-
-
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Developer Hub – Widgets & Tools</title>
-
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-
-<style>
-.carousel-container{
-  display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
-  gap:20px; padding:20px;
-}
-.carousel-card{
-  min-width:320px; max-width:320px;
-  background:#fff; border-radius:16px;
-  box-shadow:0 8px 25px rgba(0,0,0,.15);
-  scroll-snap-align:center;
-  transition:.3s; position:relative;
-}
-.carousel-card:hover{transform:translateY(-5px)}
-
-.badge{
-  position:absolute; top:12px; left:12px;
-  padding:4px 10px; font-size:11px; font-weight:700;
-  border-radius:999px; color:#fff; text-transform:uppercase;
-}
-.badge-new{background:#22c55e}
-.badge-popular{background:#ef4444}
-.badge-featured{background:#3b82f6}
-
-/* MODALS */
-.modal-bg{
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,.7);
-  backdrop-filter:blur(6px);
-  justify-content:center; align-items:center;
-  z-index:9999;
-}
-.modal-box{
-  width:92%; height:92%;
-  background:#fff; border-radius:16px;
-  overflow:hidden; position:relative;
-}
-iframe{width:100%; height:100%; border:none}
-
-.modal-controls{
-  position:absolute; top:10px; left:10px;
-  display:flex; gap:8px; z-index:10;
-}
-.ctrl-btn{
-  background:rgba(0,0,0,.75);
-  color:#fff; padding:6px 10px;
-  border-radius:8px; font-size:12px;
-  font-weight:700; cursor:pointer;
-}
-
-/* MINI LAUNCHER */
-#mini-launcher{
-  position:fixed;
-  right:16px;
-  bottom:50%;
-  transform:translateY(-50%);
-  width:40px;height:40px;
-  background:#16a34a;
-  color:#fff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  cursor:pointer;
-  z-index:99999;
-}
-#mini-panel{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  z-index:99998;
-}
-#mini-box{
-  position:absolute;
-  inset:14px;
-  background:#fff;
-  border-radius:16px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
-#mini-tabs{
-  display:flex;
-  gap:8px;
-  padding:8px;
-  background:#f1f5f9;
-}
-#mini-tabs button{
-  padding:6px 12px;
-  border:none;
-  border-radius:999px;
-  font-size:12px;
-  background:#e5e7eb;
-  cursor:pointer;
-}
-#mini-tabs button.active{
-  background:#16a34a;
-  color:#fff;
-}
-</style>
-</head>
-
-<body class="bg-gray-100">
-
-<header class="text-center py-8">
-  <h1 class="text-3xl font-bold">🚀 Developer Hub</h1>
-  <p class="text-gray-600 mt-2">
-    Widgets, tools, templates & creative resources for Bloggers, Creators & Developers
-  </p>
-</header>
-
-<div class="carousel-container">
-  <div id="carousel"></div>
-</div>
-
-<script>
-const projects=[
- {repo:"Ai-quiz",title:"AI Quiz Widget",badge:"new"},
- {repo:"curly-chainsaw",title:"HTML Script Preview Editor",badge:"popular"},
- {repo:"debeatzgh",title:"Personal Dev Portfolio Widget",badge:"featured"},
- {repo:"-Interactive-Knowledge-Quizzes",title:"Knowledge Quiz System",badge:"popular"},
- {repo:"menu-widget-",title:"Menu Floating Widget",badge:"featured"},
- {repo:"Decode-AI-starter-kit-",title:"Decode AI Starter Kit",badge:"new"},
- {repo:"-My-Brand-Online-Digital-Products-Affiliate-Shop",title:"Affiliate Digital Shop",badge:"featured"},
- {repo:"Digital-Creator-s-Essential-Guides-Tools",title:"Digital Creator Guides",badge:"popular"},
- {repo:"Docs-Carousel-for-Blogger",title:"Documentation Carousel",badge:"new"},
- {repo:"-Floating-Dock-Smart-Iframe-Modal",title:"Floating Iframe Dock",badge:"featured"},
- {repo:"Sliding-Newsletter-Signup-Widget-with-Pulse-Animation",title:"Newsletter Slider"},
- {repo:"PowerPoint-carousel-widget",title:"PowerPoint Carousel Widget"},
- {repo:"Blogger-iframe-embed-generator",title:"Iframe Embed Generator"},
- {repo:"firebase-front-end-components",title:"Firebase Components"},
- {repo:"Custom-Blogger-Theme-for-with-Dynamic-Post-Loading-and-Logo-",title:"Custom Blogger Theme"}
-];
-
-const container=document.getElementById("carousel");
-
-projects.forEach(p=>{
- container.innerHTML+=`
-  <div class="carousel-card">
-    ${p.badge?`<span class="badge badge-${p.badge}">${p.badge}</span>`:""}
-    <img src="https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designamodernminimalisticcatalogcoverthumbnailfeaturingagridoffloatingbrowserwindowsandappcardseachwithsmalliconslikebloggergithubshoppingcartchatbubbleandnewsletterenvelope6320208726725.jpg"
-         class="w-full h-40 object-cover">
-    <div class="p-5">
-      <h3 class="text-xl font-bold mb-2">${p.title}</h3>
-      <p class="text-sm text-gray-600 mb-4">
-        Explore modern widgets, tools & templates.
-      </p>
-      <div class="flex gap-3">
-        <button onclick="openPreview('https://debeatzgh1.github.io/${p.repo}/')"
-          class="w-1/2 px-4 py-2 rounded-lg text-white font-bold bg-emerald-500">
-          Preview
-        </button>
-        <a href="https://github.com/debeatzgh1/${p.repo}" target="_blank"
-          class="w-1/2 px-4 py-2 rounded-lg text-white font-bold bg-red-600 text-center">
-          Repo
-        </a>
-      </div>
-    </div>
-  </div>`;
-});
-</script>
-
-<!-- PREVIEW MODAL -->
-<div class="modal-bg" id="previewModal">
-  <div class="modal-box" id="previewBox">
-    <div class="modal-controls">
-      <div class="ctrl-btn" onclick="toggleFS('previewBox')">⛶ Fullscreen</div>
-      <div class="ctrl-btn" onclick="closePreview()">✕ Close</div>
-    </div>
-    <iframe id="previewFrame"></iframe>
-  </div>
-</div>
-
-<!-- MINI MULTI-TAB LAUNCHER -->
-<div id="mini-launcher">☰</div>
-
-<div id="mini-panel">
-  <div id="mini-box">
-    <div class="modal-controls">
-      <div class="ctrl-btn" onclick="miniBack()">⟵</div>
-      <div class="ctrl-btn" onclick="miniForward()">⟶</div>
-      <div class="ctrl-btn" onclick="toggleFS('mini-box')">⛶</div>
-      <div class="ctrl-btn" onclick="closeMini()">✕</div>
-    </div>
-    <div id="mini-tabs">
-      <button onclick="openMini(0)" class="active">Home</button>
-      <button onclick="openMini(1)">Docs</button>
-    </div>
-    <iframe id="miniFrame"></iframe>
-  </div>
-</div>
-
-<script>
-function openPreview(url){
- previewFrame.src=url;
- previewModal.style.display="flex";
-}
-function closePreview(){
- previewModal.style.display="none";
- previewFrame.src="";
- exitFS();
-}
-
-/* MINI LAUNCHER LOGIC */
-const miniUrls=[
- "https://form.svhrt.com/60f4a0aeedc1993c8c7b3989",
- "https://docs.google.com/document/d/1OfyxaiFRlRhu736Ayr8NZ_ieaNZoS5nNrhHggO63Ixg/edit?usp=drivesdk"
-];
-
-const miniPanel=document.getElementById("mini-panel");
-const miniFrame=document.getElementById("miniFrame");
-const miniTabs=document.querySelectorAll("#mini-tabs button");
-
-document.getElementById("mini-launcher").onclick=()=>{
- miniPanel.style.display="block";
- openMini(0);
-};
-
-function openMini(i){
- miniFrame.src=miniUrls[i];
- miniTabs.forEach(b=>b.classList.remove("active"));
- miniTabs[i].classList.add("active");
-}
-function closeMini(){
- miniPanel.style.display="none";
- miniFrame.src="";
-}
-function miniBack(){ try{miniFrame.contentWindow.history.back()}catch(e){} }
-function miniForward(){ try{miniFrame.contentWindow.history.forward()}catch(e){} }
-
-function toggleFS(id){
- const el=document.getElementById(id);
- if(!document.fullscreenElement){el.requestFullscreen();}
- else{document.exitFullscreen();}
-}
-function exitFS(){
- if(document.fullscreenElement){document.exitFullscreen();}
-}
-</script>
-
 </body>
 </html>

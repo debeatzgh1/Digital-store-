@@ -1,4 +1,157 @@
 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeBeatzGH | Premium Resource Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        :root {
+            --accent: #FF1493;
+            --glass: rgba(15, 15, 20, 0.85);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- 1. TOP FLOATING BANNER --- */
+        .top-banner {
+            position: fixed; top: 15px; left: 50%; transform: translateX(-50%);
+            width: 320px; height: 48px; background: var(--glass);
+            backdrop-filter: blur(12px); border: 1px solid var(--border);
+            border-radius: 50px; display: flex; align-items: center;
+            padding: 0 6px 0 16px; z-index: 10000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .banner-slider { flex: 1; height: 18px; overflow: hidden; }
+        .slide-text { display: flex; flex-direction: column; animation: slideUp 8s infinite; }
+        .slide-text span { height: 18px; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+        @keyframes slideUp {
+            0%, 25% { transform: translateY(0); }
+            33%, 58% { transform: translateY(-18px); }
+            66%, 91% { transform: translateY(-36px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* --- 2. AUTO-SLIDE CAROUSEL --- */
+        .carousel-wrapper {
+            width: 100%; overflow: hidden; padding: 100px 0 50px;
+        }
+
+        .carousel-track {
+            display: flex; gap: 25px; width: calc(300px * 10); /* Adjust based on card count */
+            animation: scrollTrack 40s linear infinite;
+        }
+
+        .carousel-track:hover { animation-play-state: paused; }
+
+        @keyframes scrollTrack {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-300px * 5)); }
+        }
+
+        .project-card {
+            min-width: 300px; height: 400px;
+            background: linear-gradient(145deg, #111, #080808);
+            border: 1px solid var(--border); border-radius: 24px;
+            padding: 24px; display: flex; flex-direction: column;
+            justify-content: space-between; transition: 0.4s;
+            position: relative; overflow: hidden;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 20, 147, 0.15);
+        }
+
+        .card-glow {
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,20,147,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .launch-btn {
+            background: var(--accent); color: white;
+            padding: 12px; border-radius: 14px;
+            font-weight: 800; font-size: 0.75rem;
+            text-align: center; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s;
+        }
+        .launch-btn:hover { background: #ff4da6; box-shadow: 0 0 20px rgba(255,20,147,0.4); }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        <div class="banner-slider">
+            <div class="slide-text">
+                <span><i class="fas fa-bolt text-pink-500"></i> New AI Tools Live</span>
+                <span><i class="fas fa-code text-blue-400"></i> Dev Portfolio Updated</span>
+                <span><i class="fas fa-rocket text-green-400"></i> Scale Your Side Hustle</span>
+            </div>
+        </div>
+        <a href="https://debeatzgh1.github.io/Home-/" target="_blank" class="bg-pink-600 text-[10px] font-black px-4 py-2 rounded-full hover:scale-105 transition">OPEN HUB</a>
+    </div>
+
+    <section class="max-w-7xl mx-auto px-6 pt-32">
+        <h2 class="text-5xl font-black tracking-tighter mb-4">The <span class="text-pink-600">Ecosystem.</span></h2>
+        <p class="text-gray-500 max-w-xl mb-12">Professional resources, AI widgets, and creative tools tailored for the modern digital strategist.</p>
+    </section>
+
+    <div class="carousel-wrapper">
+        <div class="carousel-track" id="carouselTrack">
+            </div>
+    </div>
+
+    <script>
+        const projects = [
+            { title: "Home Hub", url: "https://debeatzgh1.github.io/Home-/", icon: "fa-house", desc: "The central gateway to all DeBeatzGH platforms." },
+            { title: "E-Hub", url: "https://debeatzgh1.github.io/E-Hub-/", icon: "fa-play", desc: "Entertainment and media streaming interface." },
+            { title: "Personal Dev", url: "https://debeatzgh1.github.io/me-/", icon: "fa-user-tie", desc: "Professional developer portfolio and CV." },
+            { title: "AI Quiz", url: "https://debeatzgh1.github.io/Ai-quiz/", icon: "fa-brain", desc: "Interactive AI-powered knowledge testing." },
+            { title: "Pages Hub", url: "https://debeatzgh1.github.io/Pages-/", icon: "fa-layer-group", desc: "Curated collection of landing pages." }
+        ];
+
+        const track = document.getElementById('carouselTrack');
+
+        // Create cards and clone them for seamless infinite loop
+        function createCards(data) {
+            return data.map(p => `
+                <div class="project-card">
+                    <div class="card-glow"></div>
+                    <div>
+                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 border border-white/10">
+                            <i class="fas ${p.icon} text-xl text-pink-500"></i>
+                        </div>
+                        <h3 class="text-xl font-black mb-3">${p.title}</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">${p.desc}</p>
+                    </div>
+                    <a href="${p.url}" target="_blank" class="launch-btn">Launch Resource</a>
+                </div>
+            `).join('');
+        }
+
+        // Initialize with original + clone
+        track.innerHTML = createCards(projects) + createCards(projects);
+    </script>
+</body>
+</html>
+
+
+
+
     <iframe
       id="JotFormIFrame-241335470278053"
       title="Welcome to — Your Hub for AI Tools, Side Hustles & Digital Growth"

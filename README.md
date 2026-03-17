@@ -26,7 +26,7 @@
 
         /* --- 1. PREMIUM AUTO-SCROLL BANNER --- */
         .top-banner {
-            position: fixed; top: 0; left: 0; width: 100%; height: 45px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 35px;
             background: var(--glass); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             display: flex; align-items: center; z-index: 10005; padding: 0 20px;
@@ -63,7 +63,7 @@
         }
 
         .modal-window {
-            width: 95%; height: 90%; background: #fff; border-radius: 24px;
+            width: 95%; height: 100%; background: #fff; border-radius: 24px;
             overflow: hidden; position: relative; transform: scale(0.95); transition: 0.3s;
         }
 
@@ -100,7 +100,7 @@
             <div class="scroll-track" id="banner-track">
                 </div>
         </div>
-        <button onclick="launchModal('https://msha.ke/debeatzgh#quest-post')" class="text-[10px] font-bold border border-white/20 px-3 py-1 rounded-full hover:bg-white/10">GUEST POST</button>
+        <button onclick="launchModal('https://msha.ke/debeatzgh#quest-post')" class="text-[10px] font-bold border border-white/20 px-3 py-1 rounded-full hover:bg-white/10">Open site</button>
     </header>
 
     <div class="max-w-6xl mx-auto mt-10 px-6">

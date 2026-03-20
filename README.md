@@ -1,3 +1,182 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeBeatzGH | Smart Overlay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #00f2ff;
+            --glass: rgba(15, 15, 20, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body { background: #050507; font-family: 'Plus Jakarta Sans', sans-serif; height: 200vh; }
+
+        /* --- 1. TRANSPARENT FLOATING BUTTON --- */
+        #home-trigger {
+            position: fixed; bottom: 30px; left: 30px;
+            width: 55px; height: 55px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10000;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #home-trigger:hover { border-color: var(--accent); background: rgba(0, 242, 255, 0.1); transform: scale(1.1); }
+
+        /* --- 2. SCROLL INDICATOR ICONS --- */
+        .scroll-icon {
+            position: fixed; bottom: 95px; left: 47px;
+            font-size: 10px; color: var(--accent);
+            opacity: 0; transition: 0.3s; pointer-events: none;
+        }
+        .scroll-icon.active { opacity: 1; transform: translateY(-5px); }
+
+        /* --- 3. OVERLAY CONTAINER --- */
+        #home-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px);
+            display: none; z-index: 10001;
+            padding: 20px; flex-direction: column;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .iframe-shell {
+            width: 100%; height: 100%;
+            border: 1px solid var(--border);
+            border-radius: 24px; overflow: hidden;
+            background: #fff; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* --- 4. SMART PROMPT --- */
+        #stay-prompt {
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px; background: #111; border: 1px solid var(--accent);
+            border-radius: 20px; padding: 25px;
+            display: none; z-index: 10005; text-align: center;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .auto-pulse { animation: bounce 1s infinite; border-color: var(--accent) !important; }
+
+    </style>
+</head>
+<body>
+
+    <i id="scroll-up" class="fas fa-chevron-up scroll-icon"></i>
+    <i id="scroll-down" class="fas fa-chevron-down scroll-icon"></i>
+
+    <div id="home-trigger" onclick="toggleHome()">
+        <i class="fas fa-home text-white/50 text-sm" id="main-icon"></i>
+    </div>
+
+    <div id="home-overlay">
+        <div class="flex justify-between items-center mb-4 px-4">
+            <span class="text-[10px] font-black tracking-widest text-cyan-400">DEBEATZGH_HOME // LIVE_VIEW</span>
+            <button onclick="toggleHome()" class="text-gray-500 hover:text-white text-xs font-bold uppercase">
+               <i class="fas fa-times mr-1"></i> Close
+            </button>
+        </div>
+        <div class="iframe-shell">
+            <iframe id="home-frame" src="" class="w-full h-full border-none"></iframe>
+        </div>
+    </div>
+
+    <div id="stay-prompt">
+        <h3 class="text-white font-bold mb-2">Session Sync</h3>
+        <p class="text-gray-500 text-[11px] mb-6">You've been active for 1 minute. How would you like to continue?</p>
+        <div class="flex flex-col gap-2">
+            <button onclick="handlePrompt('stay')" class="bg-cyan-500 text-black py-3 rounded-xl text-[10px] font-black uppercase">Stay on Page</button>
+            <button onclick="handlePrompt('new')" class="border border-white/10 text-white py-3 rounded-xl text-[10px] font-bold uppercase hover:bg-white/5">Open New Tab</button>
+        </div>
+    </div>
+
+    <script>
+        const homeUrl = "https://debeatzgh1.github.io/Home-/";
+        let lastScrollTop = 0;
+
+        // --- 1. AUTO-POPUP LOGIC (Every 6s) ---
+        setInterval(() => {
+            const btn = document.getElementById('home-trigger');
+            btn.classList.add('auto-pulse');
+            setTimeout(() => btn.classList.remove('auto-pulse'), 2000);
+        }, 6000);
+
+        // --- 2. SCROLL DIRECTION LOGIC ---
+        window.addEventListener("scroll", () => {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            const up = document.getElementById('scroll-up');
+            const down = document.getElementById('scroll-down');
+
+            if (st > lastScrollTop) {
+                down.classList.add('active');
+                up.classList.remove('active');
+            } else {
+                up.classList.add('active');
+                down.classList.remove('active');
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+            
+            // Auto hide after 1.5s stillness
+            clearTimeout(window.scrollTimer);
+            window.scrollTimer = setTimeout(() => {
+                up.classList.remove('active');
+                down.classList.remove('active');
+            }, 1500);
+        });
+
+        // --- 3. OVERLAY TOGGLE ---
+        function toggleHome() {
+            const overlay = document.getElementById('home-overlay');
+            const frame = document.getElementById('home-frame');
+            const isVisible = overlay.style.display === 'flex';
+
+            if (!isVisible) {
+                frame.src = homeUrl;
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.style.display = 'none';
+                frame.src = "";
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // --- 4. ONE MINUTE PROMPT LOGIC ---
+        setTimeout(() => {
+            document.getElementById('stay-prompt').style.display = 'block';
+        }, 60000);
+
+        function handlePrompt(choice) {
+            const prompt = document.getElementById('stay-prompt');
+            prompt.style.display = 'none';
+
+            if (choice === 'stay') {
+                // If on same page, ensure UI is minimized/closed if open
+                console.log("User chose to stay.");
+            } else {
+                // Open in new tab without leaving current
+                window.open(homeUrl, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
 <iframe src="https://www.socialcreator.com/techshop" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
 
 

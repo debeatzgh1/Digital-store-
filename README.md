@@ -7,7 +7,7 @@
             <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
             <span style="width: 10px; height: 10px; border-radius: 50%; background: #eab308; display: inline-block;"></span>
             <span style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
-            <span style="font-size: 13px; font-weight: 600; color: #475569; margin-left: 10px;">Workspace Viewport |Work and collaborate on Docs </span>
+            <span style="font-size: 13px; font-weight: 600; color: #475569; margin-left: 10px;">A central collaboration platform for code, resources, ideas, and projects in music technology, digital entrepreneurship, and online business. This repo is designed for contributors to work together, launch new initiatives, and support each other’s creative and professional growth. All creators, developers, and digital hustle </span>
         </div>
         <div>
             <a href="https://appdategh1.blogspot.com/2024/05/tech-business-tools-and-ideas-for.html" target="_blank" style="font-size: 12px; font-weight: 600; color: #2563eb; text-decoration: none; padding: 6px 12px; border-radius: 6px; background: #eff6ff; transition: all 0.2s;" onmouseover="this.style.background='#dbeafe'" onmouseout="this.style.background='#eff6ff'">

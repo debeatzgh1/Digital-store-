@@ -26,7 +26,7 @@
 
         <!-- Embedded Frame Target Node -->
         <iframe 
-            src="https://docs.google.com/document/d/1jDfbRKcmrtGnWRMPQnp8WqCZ-1y5waoI/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true" 
+            src="https://debeatzgh1.github.io/1/" 
             style="width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 0.3s ease;" 
             allow="geolocation; microphone; camera; midi; encrypted-media;"
             sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin allow-top-navigation-by-user-activation"

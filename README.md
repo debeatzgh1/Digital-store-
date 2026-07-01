@@ -10,7 +10,7 @@
             <span style="font-size: 13px; font-weight: 600; color: #475569; margin-left: 10px;">A central collaboration platform for code, resources, ideas, and projects in music technology, digital entrepreneurship, and online business. This repo is designed for contributors to work together, launch new initiatives, and support each other’s creative and professional growth. All creators, developers, and digital hustle </span>
         </div>
         <div>
-            <a href="https://appdategh1.blogspot.com/2024/05/tech-business-tools-and-ideas-for.html" target="_blank" style="font-size: 12px; font-weight: 600; color: #2563eb; text-decoration: none; padding: 6px 12px; border-radius: 6px; background: #eff6ff; transition: all 0.2s;" onmouseover="this.style.background='#dbeafe'" onmouseout="this.style.background='#eff6ff'">
+            <a href="https://debeatzgh1.github.io/1/" target="_blank" style="font-size: 12px; font-weight: 600; color: #2563eb; text-decoration: none; padding: 6px 12px; border-radius: 6px; background: #eff6ff; transition: all 0.2s;" onmouseover="this.style.background='#dbeafe'" onmouseout="this.style.background='#eff6ff'">
                 View templates & edit <span style="font-size: 10px; margin-left: 2px;">↗</span>
             </a>
         </div>
@@ -26,7 +26,7 @@
 
         <!-- Embedded Frame Target Node -->
         <iframe 
-            src="https://debeatzgh1.github.io/1/" 
+            src="https://debeatzgh1.github.io/firebase-front-end-components/" 
             style="width: 100%; height: 80%; border: none; opacity: 0; transition: opacity 0.3s ease;" 
             allow="geolocation; microphone; camera; midi; encrypted-media;"
             sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin allow-top-navigation-by-user-activation"

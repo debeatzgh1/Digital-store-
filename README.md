@@ -199,7 +199,7 @@ body{
 .dbz-slide h3{
   color:var(--dbz-text);
   font-size:.92rem;
-  font-weight:800;
+  font-weight:700;
   margin-bottom:3px;
 }
 
@@ -303,8 +303,8 @@ body{
 }
 
 .dbz-brand-icon{
-  width:38px;
-  height:38px;
+  width:28px;
+  height:28px;
   border-radius:12px;
   background:linear-gradient(135deg,var(--dbz-accent),var(--dbz-pink));
   display:flex;

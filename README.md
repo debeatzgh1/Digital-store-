@@ -1,390 +1,189 @@
-=========================================
- DeBeatzGH Premium GitHub Pages Overlay Widget
- Modern Floating Promo + Lazy Load Iframe Hub
- Optimized for GitHub Pages / Blogger / HTML Gadgets
-========================================= -->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium Workspace Embed UI</title>
 
 <style>
-:root{
-  --dbz-bg:#070b12;
-  --dbz-card:rgba(13,17,23,.88);
-  --dbz-border:rgba(255,255,255,.08);
-  --dbz-text:#f8fafc;
-  --dbz-muted:#94a3b8;
-  --dbz-accent:#00e0ff;
-  --dbz-green:#22c55e;
-  --dbz-pink:#d946ef;
-  --dbz-shadow:0 15px 40px rgba(0,0,0,.45);
-  --dbz-radius:20px;
-}
-
-/* ===== GLOBAL ===== */
+/* =========================
+   GLOBAL
+========================= */
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 body{
-  background:#05070d;
-  font-family:Inter,Segoe UI,Roboto,sans-serif;
+  background:#0b1120;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:20px;
+  color:#fff;
 }
 
-/* ===== FLOATING HUB ===== */
-.dbz-hustle-widget{
-  position:fixed;
-  bottom:18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(92%,500px);
-  z-index:999999;
-  animation:dbzEntry .8s cubic-bezier(.175,.885,.32,1.2);
-}
+/* =========================
+   MAIN WRAPPER
+========================= */
+#dbz-workspace-embed{
+  --dbz-bg:#ffffff;
+  --dbz-border:#e2e8f0;
+  --dbz-text:#0f172a;
+  --dbz-muted:#64748b;
+  --dbz-primary:#2563eb;
+  --dbz-primary-light:#eff6ff;
+  --dbz-shadow:0 15px 50px rgba(0,0,0,.15);
 
-@keyframes dbzEntry{
-  from{
-    opacity:0;
-    transform:translateX(-50%) translateY(80px);
-  }
-  to{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-  }
-}
-
-/* ===== MAIN CARD ===== */
-.dbz-mini-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:var(--dbz-radius);
-  border:1px solid var(--dbz-border);
-  background:var(--dbz-card);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  box-shadow:var(--dbz-shadow);
-  padding:14px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-  cursor:pointer;
-  transition:.35s ease;
-}
-
-.dbz-mini-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(0,224,255,.35);
-  box-shadow:
-    0 0 0 1px rgba(0,224,255,.15),
-    0 20px 50px rgba(0,0,0,.5);
-}
-
-/* Animated Glow */
-.dbz-mini-card::before{
-  content:"";
-  position:absolute;
-  inset:-120%;
-  background:conic-gradient(
-    transparent,
-    rgba(0,224,255,.25),
-    transparent,
-    rgba(217,70,239,.25),
-    transparent
-  );
-  animation:dbzRotate 8s linear infinite;
-}
-
-@keyframes dbzRotate{
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-.dbz-mini-card::after{
-  content:"";
-  position:absolute;
-  inset:1px;
-  border-radius:inherit;
-  background:rgba(8,11,18,.96);
-}
-
-/* ===== CONTENT ===== */
-.dbz-content{
-  position:relative;
-  z-index:3;
-  display:flex;
-  align-items:center;
   width:100%;
-  gap:14px;
-}
-
-.dbz-icon-wrap{
-  width:50px;
-  height:50px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--dbz-accent),var(--dbz-pink));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  box-shadow:0 10px 25px rgba(0,224,255,.2);
-}
-
-.dbz-icon-wrap svg{
-  width:24px;
-  height:24px;
-  fill:#fff;
-}
-
-.dbz-text-area{
-  flex:1;
-  overflow:hidden;
-}
-
-.dbz-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:rgba(34,197,94,.12);
-  border:1px solid rgba(34,197,94,.25);
-  color:#86efac;
-  font-size:.65rem;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  padding:4px 8px;
-  border-radius:999px;
-  margin-bottom:7px;
-}
-
-.dbz-live-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 10px #22c55e;
-  animation:dbzPulse 1.5s infinite;
-}
-
-@keyframes dbzPulse{
-  0%,100%{
-    transform:scale(1);
-    opacity:1;
-  }
-  50%{
-    transform:scale(1.4);
-    opacity:.5;
-  }
-}
-
-.dbz-slide{
-  display:none;
-  animation:dbzFade .45s ease;
-}
-
-.dbz-slide.active{
-  display:block;
-}
-
-@keyframes dbzFade{
-  from{
-    opacity:0;
-    transform:translateY(6px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.dbz-slide h3{
-  color:var(--dbz-text);
-  font-size:.92rem;
-  font-weight:700;
-  margin-bottom:3px;
-}
-
-.dbz-slide p{
-  color:var(--dbz-muted);
-  font-size:.76rem;
-  line-height:1.4;
-}
-
-.dbz-arrow{
-  color:var(--dbz-muted);
-  font-size:1.3rem;
-  font-weight:900;
-  transition:.3s ease;
-}
-
-.dbz-mini-card:hover .dbz-arrow{
-  color:#fff;
-  transform:translateX(4px);
-}
-
-/* ===== ACTION BUTTONS ===== */
-.dbz-quick-actions{
-  margin-top:10px;
-  display:flex;
-  gap:10px;
-}
-
-.dbz-action-btn{
-  flex:1;
-  border:none;
-  border-radius:14px;
-  padding:10px 14px;
-  font-size:.74rem;
-  font-weight:800;
-  cursor:pointer;
-  transition:.3s ease;
-  color:#fff;
-}
-
-.dbz-open{
-  background:linear-gradient(135deg,var(--dbz-accent),#0ea5e9);
-}
-
-.dbz-visit{
-  background:linear-gradient(135deg,var(--dbz-pink),#8b5cf6);
-}
-
-.dbz-action-btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.08);
-}
-
-/* ===== IFRAME OVERLAY ===== */
-#dbzOverlay{
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.78);
-  backdrop-filter:blur(10px);
-  z-index:9999999;
-  padding:18px;
-}
-
-#dbzOverlay.active{
-  display:flex;
-  animation:dbzFade .35s ease;
-}
-
-.dbz-frame-shell{
-  width:min(1300px,100%);
-  height:min(92vh,860px);
-  background:#0d1117;
+  max-width:1200px;
+  margin:auto;
   border-radius:24px;
   overflow:hidden;
+  background:var(--dbz-bg);
+  border:1px solid var(--dbz-border);
+  box-shadow:var(--dbz-shadow);
   position:relative;
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 25px 80px rgba(0,0,0,.6);
-  display:flex;
-  flex-direction:column;
 }
 
-/* ===== TOP BAR ===== */
+/* =========================
+   HEADER
+========================= */
 .dbz-topbar{
-  height:62px;
-  background:#090d16;
-  border-bottom:1px solid rgba(255,255,255,.06);
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:0 16px;
-  flex-shrink:0;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:16px 20px;
+  background:#f8fafc;
+  border-bottom:1px solid var(--dbz-border);
 }
 
-.dbz-brand{
+.dbz-left{
   display:flex;
   align-items:center;
   gap:12px;
+  flex-wrap:wrap;
 }
 
-.dbz-brand-icon{
-  width:28px;
-  height:28px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--dbz-accent),var(--dbz-pink));
+.dbz-dots{
   display:flex;
+  gap:7px;
+}
+
+.dbz-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+}
+
+.dbz-red{
+  background:#ef4444;
+}
+
+.dbz-yellow{
+  background:#facc15;
+}
+
+.dbz-green{
+  background:#22c55e;
+}
+
+.dbz-title{
+  color:var(--dbz-text);
+  font-size:15px;
+  font-weight:700;
+}
+
+.dbz-subtitle{
+  color:var(--dbz-muted);
+  font-size:12px;
+  margin-top:3px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.dbz-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.dbz-btn{
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  padding:12px 18px;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:700;
+  transition:.3s ease;
+  display:inline-flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
-  font-weight:900;
+  gap:8px;
 }
 
-.dbz-brand h2{
-  font-size:.95rem;
-  color:#fff;
-  font-weight:800;
-}
-
-.dbz-brand p{
-  font-size:.7rem;
-  color:var(--dbz-muted);
-}
-
-.dbz-controls{
-  display:flex;
-  gap:10px;
-}
-
-.dbz-control-btn{
-  border:none;
-  padding:10px 14px;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:.72rem;
-  font-weight:800;
-  transition:.25s ease;
-}
-
-.dbz-fullscreen{
-  background:#0ea5e9;
+.dbz-btn-primary{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
   color:#fff;
 }
 
-.dbz-external{
-  background:#22c55e;
-  color:#fff;
+.dbz-btn-primary:hover{
+  transform:translateY(-2px);
 }
 
-.dbz-close{
-  background:#ef4444;
-  color:#fff;
+.dbz-btn-light{
+  background:#eff6ff;
+  color:#2563eb;
 }
 
-.dbz-control-btn:hover{
-  transform:translateY(-1px);
+.dbz-btn-light:hover{
+  background:#dbeafe;
 }
 
-/* ===== FRAME AREA ===== */
+/* =========================
+   FRAME AREA
+========================= */
 .dbz-frame-wrap{
   position:relative;
-  flex:1;
-  background:#000;
+  width:100%;
+  height:780px;
+  background:#f1f5f9;
 }
 
+.dbz-frame{
+  width:100%;
+  height:100%;
+  border:none;
+  background:#fff;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+/* =========================
+   LOADER
+========================= */
 .dbz-loader{
   position:absolute;
   inset:0;
+  background:#fff;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:16px;
-  background:#06080f;
-  z-index:2;
+  z-index:5;
 }
 
-.dbz-loader-ring{
-  width:60px;
-  height:60px;
+.dbz-spinner{
+  width:52px;
+  height:52px;
   border-radius:50%;
-  border:4px solid rgba(255,255,255,.08);
-  border-top-color:var(--dbz-accent);
-  animation:dbzSpin 1s linear infinite;
+  border:4px solid #dbeafe;
+  border-top-color:#2563eb;
+  animation:dbzSpin .8s linear infinite;
 }
 
 @keyframes dbzSpin{
@@ -394,92 +193,208 @@ body{
 }
 
 .dbz-loader p{
-  color:var(--dbz-muted);
-  font-size:.82rem;
+  margin-top:16px;
+  color:#64748b;
+  font-size:14px;
+  font-weight:600;
 }
 
-#dbzIframe{
-  width:100%;
-  height:100%;
-  border:none;
-  opacity:0;
-  transition:opacity .45s ease;
-}
-
-/* ===== MINI POPUP ===== */
-.dbz-toast{
-  position:fixed;
-  top:24px;
-  right:24px;
-  background:rgba(15,23,42,.92);
-  border:1px solid rgba(255,255,255,.08);
-  color:#fff;
-  padding:14px 18px;
-  border-radius:16px;
-  z-index:99999999;
+/* =========================
+   URL BAR
+========================= */
+.dbz-urlbar{
+  padding:16px 18px;
+  border-top:1px solid var(--dbz-border);
+  background:#fff;
   display:flex;
-  align-items:center;
   gap:12px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 10px 35px rgba(0,0,0,.45);
-  animation:dbzToast .6s ease;
+  flex-wrap:wrap;
 }
 
-@keyframes dbzToast{
-  from{
-    opacity:0;
-    transform:translateY(-20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.dbz-urlbar input{
+  flex:1;
+  min-width:220px;
+  border:1px solid #cbd5e1;
+  border-radius:14px;
+  padding:14px;
+  font-size:14px;
+  outline:none;
+  background:#f8fafc;
+  color:#0f172a;
 }
 
-.dbz-toast strong{
-  display:block;
-  font-size:.82rem;
+.dbz-urlbar input:focus{
+  border-color:#2563eb;
+  background:#fff;
 }
 
-.dbz-toast span{
-  color:var(--dbz-muted);
-  font-size:.72rem;
-}
-
-/* ===== MOBILE ===== */
+/* =========================
+   MOBILE
+========================= */
 @media(max-width:768px){
 
-  .dbz-mini-card{
+  body{
     padding:12px;
   }
 
-  .dbz-frame-shell{
-    height:95vh;
-    border-radius:18px;
-  }
-
   .dbz-topbar{
-    padding:0 10px;
-    height:58px;
+    flex-direction:column;
+    align-items:flex-start;
   }
 
-  .dbz-controls{
-    gap:6px;
+  .dbz-actions{
+    width:100%;
   }
 
-  .dbz-control-btn{
-    padding:8px 10px;
-    font-size:.64rem;
+  .dbz-btn{
+    flex:1;
   }
 
-  .dbz-brand p{
-    display:none;
+  .dbz-frame-wrap{
+    height:620px;
   }
 
-  .dbz-toast{
-    right:12px;
-    left:12px;
-    top:16px;
+  .dbz-urlbar{
+    flex-direction:column;
   }
+
 }
 </style>
+</head>
+
+<body>
+
+<div id="dbz-workspace-embed">
+
+  <!-- HEADER -->
+  <div class="dbz-topbar">
+
+    <div class="dbz-left">
+
+      <div class="dbz-dots">
+        <span class="dbz-dot dbz-red"></span>
+        <span class="dbz-dot dbz-yellow"></span>
+        <span class="dbz-dot dbz-green"></span>
+      </div>
+
+      <div>
+        <div class="dbz-title">
+          Workspace Viewport
+        </div>
+
+        <div class="dbz-subtitle">
+          Docs • Blogger • GitHub Pages • WordPress Compatible
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dbz-actions">
+
+      <a class="dbz-btn dbz-btn-light"
+         href="https://appdategh1.blogspot.com/2024/05/tech-business-tools-and-ideas-for.html"
+         target="_blank">
+         Templates ↗
+      </a>
+
+      <a class="dbz-btn dbz-btn-primary"
+         id="dbzExternalBtn"
+         href="https://docs.google.com/document/d/1jDfbRKcmrtGnWRMPQnp8WqCZ-1y5waoI/preview"
+         target="_blank">
+         Open External ↗
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- FRAME -->
+  <div class="dbz-frame-wrap">
+
+    <!-- LOADER -->
+    <div class="dbz-loader" id="dbzLoader">
+      <div class="dbz-spinner"></div>
+
+      <p>
+        Establishing secure workspace connection...
+      </p>
+    </div>
+
+    <!-- IFRAME -->
+    <iframe
+      id="dbzFrame"
+      class="dbz-frame"
+      src="https://docs.google.com/document/d/1jDfbRKcmrtGnWRMPQnp8WqCZ-1y5waoI/preview"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
+      onload="dbzFrameLoaded()">
+    </iframe>
+
+  </div>
+
+  <!-- URL TOOL -->
+  <div class="dbz-urlbar">
+
+    <input
+      type="text"
+      id="dbzUrlInput"
+      placeholder="Paste GitHub Pages, Blogger, Docs, or WordPress URL..."
+    >
+
+    <button
+      class="dbz-btn dbz-btn-primary"
+      onclick="dbzLoadURL()">
+      Preview URL
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  const frame = document.getElementById("dbzFrame");
+  const loader = document.getElementById("dbzLoader");
+  const input = document.getElementById("dbzUrlInput");
+  const externalBtn = document.getElementById("dbzExternalBtn");
+
+  // FRAME LOAD
+  window.dbzFrameLoaded = function(){
+
+    loader.style.display = "none";
+    frame.style.opacity = "1";
+
+  };
+
+  // LOAD NEW URL
+  window.dbzLoadURL = function(){
+
+    let url = input.value.trim();
+
+    if(!url){
+      alert("Please enter a valid URL.");
+      return;
+    }
+
+    // Convert Google Docs edit → preview
+    if(url.includes("docs.google.com/document") && url.includes("/edit")){
+      url = url.replace("/edit", "/preview");
+    }
+
+    // Show loader
+    loader.style.display = "flex";
+    frame.style.opacity = "0";
+
+    // Load iframe
+    frame.src = url;
+
+    // Update external button
+    externalBtn.href = url;
+
+  };
+
+})();
+</script>

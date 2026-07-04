@@ -1,3 +1,468 @@
+<!-- ===============================
+ DeBeatzGH Premium Floating Banner
+ GitHub Pages / Blogger Compatible
+ Modern Interactive Top Banner
+================================ -->
+
+<style>
+:root{
+    --dbz-bg:#0d1117;
+    --dbz-card:#161b22;
+    --dbz-border:#30363d;
+    --dbz-accent:#238636;
+    --dbz-accent-2:#58a6ff;
+    --dbz-text:#f0f6fc;
+    --dbz-muted:#8b949e;
+    --dbz-shadow:0 10px 35px rgba(0,0,0,.45);
+}
+
+/* GLOBAL RESET */
+.dbz-banner-wrap *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+/* MAIN FLOATING BANNER */
+.dbz-banner-wrap{
+    position:fixed;
+    top:14px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:520px;
+    z-index:999999;
+    animation:dbzEntry .8s cubic-bezier(.175,.885,.32,1.2);
+    font-family:Inter,Segoe UI,Roboto,sans-serif;
+}
+
+@keyframes dbzEntry{
+    from{
+        opacity:0;
+        transform:translateX(-50%) translateY(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(-50%) translateY(0);
+    }
+}
+
+.dbz-banner{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border-radius:20px;
+    background:rgba(13,17,23,.88);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:var(--dbz-shadow);
+    cursor:pointer;
+    transition:.35s ease;
+}
+
+.dbz-banner:hover{
+    transform:translateY(-2px) scale(1.01);
+    border-color:rgba(88,166,255,.45);
+    box-shadow:0 18px 40px rgba(0,0,0,.55);
+}
+
+/* Animated glow */
+.dbz-banner::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(88,166,255,.15),
+        rgba(35,134,54,.18),
+        transparent
+    );
+    animation:dbzGlow 5s linear infinite;
+}
+
+@keyframes dbzGlow{
+    0%{transform:translateX(-100%);}
+    100%{transform:translateX(100%);}
+}
+
+/* ICON */
+.dbz-icon{
+    position:relative;
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--dbz-accent),var(--dbz-accent-2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    z-index:2;
+    box-shadow:0 10px 20px rgba(35,134,54,.35);
+}
+
+.dbz-icon svg{
+    width:22px;
+    height:22px;
+    fill:#fff;
+}
+
+/* TEXT SLIDER */
+.dbz-content{
+    flex:1;
+    overflow:hidden;
+    position:relative;
+    z-index:2;
+}
+
+.dbz-slide{
+    display:none;
+    animation:dbzFade .5s ease;
+}
+
+.dbz-slide.active{
+    display:block;
+}
+
+@keyframes dbzFade{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.dbz-title{
+    font-size:.92rem;
+    font-weight:800;
+    color:var(--dbz-text);
+    letter-spacing:.2px;
+}
+
+.dbz-desc{
+    margin-top:4px;
+    color:var(--dbz-muted);
+    font-size:.76rem;
+    line-height:1.4;
+}
+
+/* LIVE BADGE */
+.dbz-badge{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(35,134,54,.15);
+    border:1px solid rgba(35,134,54,.25);
+    padding:5px 10px;
+    border-radius:999px;
+    color:#7ee787;
+    font-size:.66rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    flex-shrink:0;
+    z-index:2;
+}
+
+.dbz-pulse{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#7ee787;
+    animation:dbzPulse 1.5s infinite;
+}
+
+@keyframes dbzPulse{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:scale(1.6);
+        opacity:.4;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* QUICK ACTION BUTTONS */
+.dbz-quick-links{
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.dbz-quick-links::-webkit-scrollbar{
+    display:none;
+}
+
+.dbz-link{
+    white-space:nowrap;
+    text-decoration:none;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.06);
+    color:var(--dbz-text);
+    font-size:.74rem;
+    padding:9px 14px;
+    border-radius:999px;
+    transition:.25s ease;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.dbz-link:hover{
+    background:var(--dbz-accent-2);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+/* MINI NOTIFICATION */
+.dbz-popup{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    background:rgba(13,17,23,.94);
+    border:1px solid rgba(88,166,255,.22);
+    color:var(--dbz-text);
+    padding:14px 16px;
+    border-radius:16px;
+    width:280px;
+    z-index:99999;
+    backdrop-filter:blur(12px);
+    box-shadow:var(--dbz-shadow);
+    animation:dbzPopup 1s ease;
+}
+
+@keyframes dbzPopup{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.dbz-popup h4{
+    font-size:.9rem;
+    margin-bottom:6px;
+}
+
+.dbz-popup p{
+    font-size:.76rem;
+    color:var(--dbz-muted);
+    line-height:1.5;
+}
+
+.dbz-popup button{
+    margin-top:12px;
+    border:none;
+    background:var(--dbz-accent);
+    color:#fff;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:.74rem;
+    font-weight:700;
+}
+
+/* MOBILE */
+@media(max-width:640px){
+
+    .dbz-banner{
+        padding:12px;
+        gap:10px;
+    }
+
+    .dbz-icon{
+        width:42px;
+        height:42px;
+    }
+
+    .dbz-title{
+        font-size:.82rem;
+    }
+
+    .dbz-desc{
+        font-size:.7rem;
+    }
+
+    .dbz-popup{
+        width:90%;
+        right:5%;
+    }
+}
+</style>
+
+<!-- ===============================
+ MAIN BANNER
+================================ -->
+
+<div class="dbz-banner-wrap">
+
+    <div class="dbz-banner" onclick="dbzOpenMainLink()">
+
+        <div class="dbz-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 3h7v4h-7z"/>
+            </svg>
+        </div>
+
+        <div class="dbz-content">
+
+            <div class="dbz-slide active">
+                <div class="dbz-title">
+                    DeBeatzGH Digital Creator Hub
+                </div>
+                <div class="dbz-desc">
+                    Launch online businesses, AI tools, side hustles & premium digital resources.
+                </div>
+            </div>
+
+            <div class="dbz-slide">
+                <div class="dbz-title">
+                    Professional GitHub Pages UI
+                </div>
+                <div class="dbz-desc">
+                    Explore reusable widgets, premium interfaces and startup resources.
+                </div>
+            </div>
+
+            <div class="dbz-slide">
+                <div class="dbz-title">
+                    AI & Online Business Starter Kits
+                </div>
+                <div class="dbz-desc">
+                    Smart tools and guides designed for creators, freelancers and entrepreneurs.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dbz-badge">
+            <span class="dbz-pulse"></span>
+            LIVE
+        </div>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="dbz-quick-links">
+
+        <a class="dbz-link"
+           href="https://debeatzgh1.github.io/Home-/"
+           target="_blank">
+           🏠 Home
+        </a>
+
+        <a class="dbz-link"
+           href="https://debeatzgh1.github.io/Pages-/"
+           target="_blank">
+           📄 Pages
+        </a>
+
+        <a class="dbz-link"
+           href="https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/"
+           target="_blank">
+           🚀 Starter Kits
+        </a>
+
+        <a class="dbz-link"
+           href="https://beatzde4.blogspot.com/"
+           target="_blank">
+           ✍️ Blog
+        </a>
+
+    </div>
+
+</div>
+
+<!-- SMART POPUP -->
+<div class="dbz-popup" id="dbzPopup">
+    <h4>✨ Welcome to DeBeatzGH</h4>
+    <p>
+        Discover premium AI resources, side hustle starter kits, blogging tools,
+        GitHub page templates and modern creator solutions.
+    </p>
+
+    <button onclick="window.open('https://debeatzgh1.github.io/Digital-Creator-s-Essential-Guides-Tools/','_blank')">
+        Explore Resources
+    </button>
+</div>
+
+<script>
+/* ===============================
+   MAIN URL OPEN
+================================ */
+function dbzOpenMainLink(){
+    window.open(
+        "https://debeatzgh1.github.io/Digital-Creator-s-Essential-Guides-Tools/",
+        "_blank"
+    );
+}
+
+/* ===============================
+   AUTO TEXT SLIDER
+================================ */
+const dbzSlides = document.querySelectorAll('.dbz-slide');
+let dbzCurrent = 0;
+
+function dbzRotateSlides(){
+
+    dbzSlides[dbzCurrent].classList.remove('active');
+
+    dbzCurrent = (dbzCurrent + 1) % dbzSlides.length;
+
+    dbzSlides[dbzCurrent].classList.add('active');
+}
+
+setInterval(dbzRotateSlides, 3500);
+
+/* ===============================
+   AUTO POPUP CLOSE
+================================ */
+setTimeout(() => {
+    const popup = document.getElementById('dbzPopup');
+
+    if(popup){
+        popup.style.transition = ".5s ease";
+        popup.style.opacity = "0";
+        popup.style.transform = "translateY(20px)";
+
+        setTimeout(() => {
+            popup.remove();
+        }, 500);
+    }
+
+}, 14000);
+
+/* ===============================
+   LAZY ENGAGEMENT EFFECT
+================================ */
+window.addEventListener('scroll', () => {
+    const banner = document.querySelector('.dbz-banner');
+
+    if(window.scrollY > 100){
+        banner.style.backdropFilter = "blur(24px)";
+        banner.style.borderColor = "rgba(88,166,255,.28)";
+    } else {
+        banner.style.borderColor = "rgba(255,255,255,.08)";
+    }
+});
+</script>
+
 
 <html lang="en">
 <head>

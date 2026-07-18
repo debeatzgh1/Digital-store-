@@ -764,7 +764,7 @@ body{
 
       <a class="dbz-btn dbz-btn-primary"
          id="dbzExternalBtn"
-         href="https://docs.google.com/document/d/1jDfbRKcmrtGnWRMPQnp8WqCZ-1y5waoI/preview"
+         href="https://mailchi.mp/0a569aa1173e/ai-decoder"
          target="_blank">
          Open External ↗
       </a>
@@ -789,7 +789,7 @@ body{
     <iframe
       id="dbzFrame"
       class="dbz-frame"
-      src="https://docs.google.com/document/d/1jDfbRKcmrtGnWRMPQnp8WqCZ-1y5waoI/preview"
+      src="https://mailchi.mp/0a569aa1173e/ai-decoder"
       loading="lazy"
       allowfullscreen
       referrerpolicy="strict-origin-when-cross-origin"
@@ -854,7 +854,7 @@ body{
     frame.style.opacity = "0";
 
     // Load iframe
-    frame.src = url;
+    frame.src = https://mailchi.mp/0a569aa1173e/ai-decoder;
 
     // Update external button
     externalBtn.href = url;
